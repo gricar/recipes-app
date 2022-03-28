@@ -4,23 +4,36 @@ import FoodContext from './FoodContext';
 import { fetchFood } from '../services/fetchFood';
 
 function FoodProvider({ children }) {
-  const [foodList, setFoodList] = useState({ data: [] });
+  const [foodListByCategory, setFoodListByCategory] = useState({ meals: [] });
+  const [foodListByNatio, setFoodListByNatio] = useState({ meals: [] });
+  const [foodListByIngre, setFoodListByIngre] = useState({ meals: [] });
   
-  const getfoodList = () => {
-    fetchFood()
+  const getfoodList = (searchType, itemSearch) => {
+    fetchFood(searchType, itemSearch)
       .then((response) => {
-        setFoodList(response);
+        if (searchType === 'c=') {
+          setFoodListByCategory(response);
+        } else if(searchType === 'a=') {
+          setFoodListByNatio(response);
+        }
+        else {
+          setFoodListByIngre(response);
+        }        
       })
       .catch((error) => {
-        setPlanetListError({ error });
+        setPlanetListError({ error, });
       });
   };
 
   return (
     <FoodContext.Provider
       value={ {
-        foodList,
-        setFoodList,
+        foodListByCategory,
+        setFoodListByCategory,
+        foodListByNatio,
+        setFoodListByNatio,
+        foodListByIngre,
+        setFoodListByIngre,
         getfoodList,        
       } }
     >
