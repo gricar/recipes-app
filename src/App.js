@@ -24,7 +24,7 @@ import NotFound from './pages/notFound/NotFound';
 
 function App() {
   return (
-    <div className="container-login">
+    <div>
       <Router>
         <Switch>
           <Route exact path="/" component={ Login } />
