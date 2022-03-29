@@ -11,7 +11,6 @@ function DrinksProvider({ children }) {
   const [drinksListError, setDrinksListError] = useState({ drinks: [] });
 
   const getDrinksList = (searchType, searchDrink) => {
-    console.log('drinks');
     fetchDrinks(searchType, searchDrink)
       .then((response) => {
         if (searchType === 'Ingredient') {

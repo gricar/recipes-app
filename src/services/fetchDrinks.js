@@ -11,7 +11,6 @@ const fetchDrinks = async (itemSearch, searchDrink) => {
   try {
     const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/${urlAditional}${searchDrink}`);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) { return error; }
 };
