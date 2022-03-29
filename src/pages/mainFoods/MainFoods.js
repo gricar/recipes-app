@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class MainFoods extends Component {
-  render() {
-    return (<p>oi do MainFoods temporário</p>);
-  }
+function MainFoods() {
+  return (
+    <p>MainFoods</p>
+  );
 }
 
 export default MainFoods;
