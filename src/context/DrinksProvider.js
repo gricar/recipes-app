@@ -5,12 +5,13 @@ import fetchDrinks from '../services/fetchDrinks';
 
 // STCOSTA
 function DrinksProvider({ children }) {
-  const [drinksListByIngre, setDrinksListByIngre] = useState({ meals: [] });
-  const [drinksListByName, setDrinksListByName] = useState({ meals: [] });
-  const [drinksListByFirstLetter, setDrinksListByFirstLetter] = useState({ meals: [] });
-  const [drinksListError, setDrinksListError] = useState({ meals: [] });
+  const [drinksListByIngre, setDrinksListByIngre] = useState({ drinks: [] });
+  const [drinksListByName, setDrinksListByName] = useState({ drinks: [] });
+  const [drinksListByFirstLetter, setDrinksListByFirstLetter] = useState({ drinks: [] });
+  const [drinksListError, setDrinksListError] = useState({ drinks: [] });
 
   const getDrinksList = (searchType, searchDrink) => {
+    console.log('drinks');
     fetchDrinks(searchType, searchDrink)
       .then((response) => {
         if (searchType === 'Ingredient') {
