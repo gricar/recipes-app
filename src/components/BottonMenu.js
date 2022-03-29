@@ -2,10 +2,11 @@ import React from 'react';
 import drinkIcon from '../images/drinkIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
+import './BottonMenu.css';
 
 function BottonMenu() {
   return (
-    <nav data-testid="footer">
+    <nav data-testid="footer" className="bottonMenu">
       <button
         src="drinkIcon"
         data-testid="drinks-bottom-btn"
