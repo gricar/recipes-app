@@ -1,24 +1,24 @@
 import React, { useEffect, useContext } from 'react';
-import FoodContext from '../../context/FoodContext';
+import DrinksContext from '../../context/DrinksContext';
 
 function MainFoods() {
   const {
-    getfoodList,
-    // foodListByName,
-    // foodListByIngre,
-    foodListByFirstLetter,
-  } = useContext(FoodContext);
+    getDrinksList,
+    drinksListByIngre,
+    // drinksListByName,
+    // drinksListByFirstLetter,
+  } = useContext(DrinksContext);
 
   useEffect(() => {
-    getfoodList('FirstLetter', 'B');
+    getDrinksList('drinksListByIngre', 'Orange');
   }, []);
 
   return (
     <main>
       {
-        foodListByFirstLetter.meals.length !== 0
+        drinksListByIngre.meals.length !== 0
           && (
-            foodListByFirstLetter.meals.forEach((mealElem) => { console.log(mealElem); })
+            drinksListByIngre.meals.forEach((drinkElem) => { console.log(drinkElem); })
           )
       }
     </main>

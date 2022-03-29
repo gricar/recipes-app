@@ -8,6 +8,7 @@ function FoodProvider({ children }) {
   const [foodListByIngre, setFoodListByIngre] = useState({ meals: [] });
   const [foodListByName, setFoodListByName] = useState({ meals: [] });
   const [foodListByFirstLetter, setFoodListByFirstLetter] = useState({ meals: [] });
+  const [foodListError, setFoodListError] = useState({ meals: [] });
 
   const getfoodList = (searchType, searchFood) => {
     fetchFood(searchType, searchFood)
@@ -17,7 +18,7 @@ function FoodProvider({ children }) {
         } else if (searchType === 'Name') {
           setFoodListByName(response);
         } else {
-          setFoodListByFirstLetter(response);
+          setFoodListError(response);
         }
       })
       .catch((error) => {
@@ -35,6 +36,7 @@ function FoodProvider({ children }) {
         foodListByFirstLetter,
         setFoodListByFirstLetter,
         getfoodList,
+        foodListError,
       } }
     >
       {children}
