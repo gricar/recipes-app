@@ -44,7 +44,7 @@ function Login() {
       <button
         data-testid="login-submit-btn"
         type="button"
-<<<<<< main-group-18-requisito-05
+        // main-group-18-requisito-05
         disabled={ isDisabled }
       >
         Enter
