@@ -1,40 +1,40 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import FoodContext from './FoodContext';
-import { fetchFood } from '../services/fetchFood';
+import fetchFood from '../services/fetchFood';
 
+// STCOSTA
 function FoodProvider({ children }) {
-  const [foodListByCategory, setFoodListByCategory] = useState({ meals: [] });
-  const [foodListByNatio, setFoodListByNatio] = useState({ meals: [] });
   const [foodListByIngre, setFoodListByIngre] = useState({ meals: [] });
-  
-  const getfoodList = (searchType, itemSearch) => {
-    fetchFood(searchType, itemSearch)
+  const [foodListByName, setFoodListByName] = useState({ meals: [] });
+  const [foodListByFirstLetter, setFoodListByFirstLetter] = useState({ meals: [] });
+
+  const getfoodList = (searchType, searchFood) => {
+    fetchFood(searchType, searchFood)
       .then((response) => {
-        if (searchType === 'c=') {
-          setFoodListByCategory(response);
-        } else if(searchType === 'a=') {
-          setFoodListByNatio(response);
-        }
-        else {
+        if (searchType === 'Ingredient') {
           setFoodListByIngre(response);
-        }        
+        } else if (searchType === 'Name') {
+          setFoodListByName(response);
+        } else {
+          setFoodListByFirstLetter(response);
+        }
       })
       .catch((error) => {
-        setPlanetListError({ error, });
+        setPlanetListError({ meals: error });
       });
   };
 
   return (
     <FoodContext.Provider
       value={ {
-        foodListByCategory,
-        setFoodListByCategory,
-        foodListByNatio,
-        setFoodListByNatio,
         foodListByIngre,
         setFoodListByIngre,
-        getfoodList,        
+        foodListByName,
+        setFoodListByName,
+        foodListByFirstLetter,
+        setFoodListByFirstLetter,
+        getfoodList,
       } }
     >
       {children}
