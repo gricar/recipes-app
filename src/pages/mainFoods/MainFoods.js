@@ -1,8 +1,12 @@
 import React from 'react';
+import BottonMenu from '../../components/BottonMenu';
 
 function MainFoods() {
   return (
-    <p>MainFoods</p>
+    <div>
+      <p>MainFoods</p>
+      <BottonMenu />
+    </div>
   );
 }
 
