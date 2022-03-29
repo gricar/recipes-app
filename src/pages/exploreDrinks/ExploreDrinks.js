@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import BottonMenu from '../../components/BottonMenu';
 
-class ExploreDrinks extends Component {
-  render() {
-    return (<p>oi do ExploreDrinks temporário</p>);
-  }
+function ExploreDrinks() {
+  return (
+    <div>
+      <p>ExploreDrinks</p>
+      <BottonMenu />
+    </div>
+  );
 }
 
 export default ExploreDrinks;

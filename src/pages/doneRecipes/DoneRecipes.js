@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class DoneRecipes extends Component {
-  render() {
-    return (<p>oi do DoneRecipes temporário</p>);
-  }
+function DoneRecipes() {
+  return (
+    <div>
+      <p>DoneRecipes</p>
+    </div>
+  );
 }
 
 export default DoneRecipes;

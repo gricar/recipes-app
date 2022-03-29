@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import BottonMenu from '../../components/BottonMenu';
 
-class Profile extends Component {
-  render() {
-    return (<p>oi do Profile temporário</p>);
-  }
+function Profile() {
+  return (
+    <div>
+      <p>Profile</p>
+      <BottonMenu />
+    </div>
+  );
 }
 
 export default Profile;

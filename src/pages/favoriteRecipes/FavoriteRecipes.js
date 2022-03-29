@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class FavoriteRecipes extends Component {
-  render() {
-    return (<p>oi do FavoriteRecipes temporário</p>);
-  }
+function FavoriteRecipes() {
+  return (
+    <div>
+      <p>FavoriteRecipes</p>
+    </div>
+  );
 }
 
 export default FavoriteRecipes;
