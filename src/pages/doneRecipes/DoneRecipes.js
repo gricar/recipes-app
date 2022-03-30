@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Header from '../../components/header/Header';
 
-function DoneRecipes() {
-  return (
-    <div>
-      <p>DoneRecipes</p>
-    </div>
-  );
+class DoneRecipes extends Component {
+  render() {
+    return (
+      <div>
+        <Header title="Done Recipes" searchBtn={ false } />
+        <p>oi do DoneRecipes temporário</p>
+      </div>
+    );
+  }
 }
 
 export default DoneRecipes;
