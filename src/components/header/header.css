@@ -1,0 +1,13 @@
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.searchIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+}

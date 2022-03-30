@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import Header from '../../components/header/Header';
 
 class MainDrinks extends Component {
   render() {
-    return (<p>oi do MainDrinks temporário</p>);
+    return (
+      <div>
+        <Header title="Drinks" />
+        <p>oi do MainDrinks temporário</p>
+      </div>
+    );
   }
 }
 

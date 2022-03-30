@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import Header from '../../components/header/Header';
 
 class Profile extends Component {
   render() {
-    return (<p>oi do Profile temporário</p>);
+    return (
+      <div>
+        <Header title="Profile" searchBtn={ false } />
+        <p>oi do Profile temporário</p>
+      </div>
+    );
   }
 }
 

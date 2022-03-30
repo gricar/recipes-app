@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import Header from '../../components/header/Header';
 
 class DoneRecipes extends Component {
   render() {
-    return (<p>oi do DoneRecipes temporário</p>);
+    return (
+      <div>
+        <Header title="Done Recipes" searchBtn={ false } />
+        <p>oi do DoneRecipes temporário</p>
+      </div>
+    );
   }
 }
 
