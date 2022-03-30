@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import BottonMenu from '../../components/BottonMenu';
 import Header from '../../components/header/Header';
 
-class Profile extends Component {
-  render() {
-    return (
-      <div>
-        <Header title="Profile" searchBtn={ false } />
-        <p>oi do Profile temporário</p>
-      </div>
-    );
-  }
+function Profile() {
+  return (
+    <div>
+      <Header title="Profile" searchBtn={ false } />
+      <p>Profile</p>
+      <BottonMenu />
+    </div>
+  );
 }
 
 export default Profile;

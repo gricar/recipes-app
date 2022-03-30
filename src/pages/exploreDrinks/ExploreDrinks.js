@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import BottonMenu from '../../components/BottonMenu';
 import Header from '../../components/header/Header';
 
-class ExploreDrinks extends Component {
-  render() {
-    return (
-      <div>
-        <Header title="Explore Drinks" searchBtn={ false } />
-        <p>oi do ExploreDrinks temporário</p>
-      </div>
-    );
-  }
+function ExploreDrinks() {
+  return (
+    <div>
+      <Header title="Explore Drinks" searchBtn={ false } />
+      <p>ExploreDrinks</p>
+      <BottonMenu />
+    </div>
+  );
 }
 
 export default ExploreDrinks;

@@ -1,0 +1,8 @@
+.bottonMenu {
+  bottom: 0;
+  display: flex;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}

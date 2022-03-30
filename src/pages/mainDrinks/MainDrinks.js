@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import BottonMenu from '../../components/BottonMenu';
 import Header from '../../components/header/Header';
 
-class MainDrinks extends Component {
-  render() {
-    return (
-      <div>
-        <Header title="Drinks" />
-        <p>oi do MainDrinks temporário</p>
-      </div>
-    );
-  }
+function MainDrinks() {
+  return (
+    <div>
+      <Header title="Drinks" />
+      <p>MainDrinks</p>
+      <BottonMenu />
+    </div>
+  );
 }
 
 export default MainDrinks;
