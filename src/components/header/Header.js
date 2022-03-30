@@ -36,7 +36,7 @@ function Header({ title, searchBtn = true }) {
         }
       </header>
       {
-        hasSearchInput && <SearchInputBar />
+        hasSearchInput && <SearchInputBar title={ title } />
       }
     </div>
   );
