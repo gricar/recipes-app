@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+}
+
+.container-button-category {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 3px;
+}
+
+.container-button-category button {
+  margin: 3px;
+  padding: 5px 0;
+  width: 12.5em;
+}
+
+.container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  border: 1px solid black;
+  margin: 3px;
+  width: auto;
+}
