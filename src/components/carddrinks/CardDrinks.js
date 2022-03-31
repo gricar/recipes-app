@@ -1,12 +1,12 @@
 // Feito por Tabata;
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import DrinksMainContext from '../../context/DrinksMainContext';
+import DrinksContext from '../../context/DrinksContext';
 
 const QTD_RECIPES = 12;
 
 function CardDrinks() {
-  const { drinks, drinksByCategory } = useContext(DrinksMainContext);
+  const { drinks, drinksByCategory } = useContext(DrinksContext);
 
   const filteredDrinks = () => {
     if (drinksByCategory) {
@@ -24,7 +24,7 @@ function CardDrinks() {
       }, index) => (
         <Link
           key={ idDrink }
-          style={ { textDecoration: 'none', color: 'black' } }
+          // style={ { textDecoration: 'none', color: 'black' } }
           to={ `/drinks/${idDrink}` }
         >
           <div
