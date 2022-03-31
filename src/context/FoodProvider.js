@@ -6,6 +6,7 @@ import fetchFood from '../services/fetchFood';
 // STCOSTA
 function FoodProvider({ children }) {
   const [foodListByIngre, setFoodListByIngre] = useState({ meals: [] });
+  const [foodDetailById, setFoodDetailById] = useState({ meals: [] });
   const [foodListByName, setFoodListByName] = useState({ meals: [] });
   const [foodListByFirstLetter, setFoodListByFirstLetter] = useState({ meals: [] });
   const [foodListError, setFoodListError] = useState({ meals: [] });
@@ -17,12 +18,14 @@ function FoodProvider({ children }) {
           setFoodListByIngre(response);
         } else if (searchType === 'Name') {
           setFoodListByName(response);
+        } else if (searchType === 'id') {
+          setFoodDetailById(response);
         } else {
           setFoodListError(response);
         }
       })
       .catch((error) => {
-        setPlanetListError({ meals: error });
+        setFoodListError({ meals: error });
       });
   };
 
@@ -37,6 +40,8 @@ function FoodProvider({ children }) {
         setFoodListByFirstLetter,
         getfoodList,
         foodListError,
+        foodDetailById,
+        setFoodDetailById,
       } }
     >
       {children}
