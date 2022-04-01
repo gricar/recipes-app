@@ -12,7 +12,8 @@ function FoodRecipeDetails(props) {
     getfoodList,
     foodDetailById,
   } = useContext(FoodContext);
-
+  const { meals } = foodDetailById;
+  console.log(meals);
   useEffect(() => {
     const { match: { params: { recipeid } } } = props;
     getfoodList('id', recipeid);
@@ -24,16 +25,17 @@ function FoodRecipeDetails(props) {
         && (
           <>
             <img
+              src={ meals[0].strMealThumb }
               data-testid="recipe-photo"
               alt="food"
             />
-            <h2 data-testid="recipe-title">title</h2>
+            <h2 data-testid="recipe-title">{ meals[0].strMeal }</h2>
             <button
               src="shareIcon"
               data-testid="share-btn"
               type="button"
               id="shareIcon"
-              onClick={ () => history.push('/drinks') }
+              onClick={ () => history.push('/foods') }
             >
               <img src={ shareIcon } alt="share" />
             </button>
@@ -42,12 +44,19 @@ function FoodRecipeDetails(props) {
               data-testid="favorite-btn"
               type="button"
               id="favorite"
-              onClick={ () => history.push('/drinks') }
+              onClick={ () => history.push('/foods') }
             >
               <img src={ whiteHeartIcon } alt="white heart" />
             </button>
-            <p data-testid="recipe-category">categoria</p>
-            <p data-testid="instructions">instruções</p>
+            <p data-testid="recipe-category">{ meals[0].strCategory }</p>
+            <p data-testid="instructions">{ meals[0].strInstructions }</p>
+            <iframe
+              data-testid="video"
+              src="https://www.youtube.com/embed/J4D855Q9-jg"
+              title="YouTube video player"
+              frameBorder="0"
+            />
+            {/* <iframe title={ meals[0].strMeal } src={ meals[0].strYoutube } /> */}
             <button
               data-testid="start-recipe-btn"
               type="button"
