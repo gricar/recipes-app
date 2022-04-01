@@ -73,7 +73,7 @@ function FoodRecipeDetails(props) {
             >
               <img src={ whiteHeartIcon } alt="white heart" />
             </button>
-            <p data-testid="recipe-category">{ meals[0].strCategory }</p>            
+            <p data-testid="recipe-category">{ meals[0].strCategory }</p>
             <ul>
               {
                 getIngredienteAndMeasure()
