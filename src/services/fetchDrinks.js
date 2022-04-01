@@ -7,6 +7,8 @@ const fetchDrinks = async (itemSearch, searchDrink) => {
     urlAditional = 'search.php?s=';
   } else if (itemSearch === 'id') {
     urlAditional = 'lookup.php?i=';
+  } else if (itemSearch === 'random') {
+    urlAditional = 'random';
   } else {
     urlAditional = 'search.php?f=';
   }
