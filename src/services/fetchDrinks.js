@@ -5,6 +5,8 @@ const fetchDrinks = async (itemSearch, searchDrink) => {
     urlAditional = 'filter.php?i=';
   } else if (itemSearch === 'Name') {
     urlAditional = 'search.php?s=';
+  } else if (itemSearch === 'id') {
+    urlAditional = 'lookup.php?i=';
   } else {
     urlAditional = 'search.php?f=';
   }

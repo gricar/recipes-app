@@ -1,11 +1,12 @@
 // Feito por Tabata;
+// Suéli - alteração quant e dataIdText dinâmico.
+import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import FoodContext from '../../context/FoodContext';
 
-const QTD_RECIPES = 12;
-
-function CardFoods() {
+function CardFoods({ quant, dataIdText }) {
+  const QTD_RECIPES = quant;
   const { recipes, recipesByCategory } = useContext(FoodContext);
 
   const filteredRecipes = () => {
@@ -29,7 +30,7 @@ function CardFoods() {
         >
           <div
             className="card"
-            data-testid={ `${index}-recipe-card` }
+            data-testid={ `${index}${dataIdText}` }
           >
             <img
               src={ strMealThumb }
@@ -48,5 +49,10 @@ function CardFoods() {
     </section>
   );
 }
+
+CardFoods.propTypes = {
+  quant: PropTypes.number.isRequired,
+  dataIdText: PropTypes.string.isRequired,
+};
 
 export default CardFoods;

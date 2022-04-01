@@ -11,7 +11,7 @@ function MainFoods() {
     <section>
       <Header title="Foods" />
       <ButtonCategoryFood />
-      <CardFoods />
+      <CardFoods quant={ 12 } dataIdText="-recipe-card" />
       <BottonMenu />
     </section>
   );

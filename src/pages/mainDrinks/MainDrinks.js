@@ -10,7 +10,7 @@ function MainDrinks() {
     <section>
       <Header title="Drinks" />
       <ButtonCategoryDrink />
-      <CardDrinks />
+      <CardDrinks quant={ 12 } dataIdText="-recipe-card" />
       <BottonMenu />
     </section>
   );

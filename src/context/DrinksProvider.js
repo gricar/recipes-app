@@ -9,6 +9,7 @@ import {
 // STCOSTA
 function DrinksProvider({ children }) {
   const [drinksListByIngre, setDrinksListByIngre] = useState({ drinks: [] });
+  const [drinksDetailById, setDrinksDetailById] = useState({ drinks: [] });
   const [drinksListByName, setDrinksListByName] = useState({ drinks: [] });
   const [drinksListByFirstLetter, setDrinksListByFirstLetter] = useState({ drinks: [] });
   const [drinksListError, setDrinksListError] = useState({ drinks: [] });
@@ -25,6 +26,8 @@ function DrinksProvider({ children }) {
           setDrinksListByIngre(response);
         } else if (searchType === 'Name') {
           setDrinksListByName(response);
+        } else if (searchType === 'id') {
+          setDrinksDetailById(response);
         } else if (searchType === 'First-letter') {
           setDrinksListByFirstLetter(response);
         }
@@ -62,6 +65,8 @@ function DrinksProvider({ children }) {
     filterCategory,
     setFilterCategory,
     setDrinksByCategory,
+    drinksDetailById,
+    setDrinksDetailById,
   };
 
   return (

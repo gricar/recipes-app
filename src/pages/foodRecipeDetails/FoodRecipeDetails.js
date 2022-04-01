@@ -4,6 +4,9 @@ import React, { useEffect, useContext } from 'react';
 import FoodContext from '../../context/FoodContext';
 import shareIcon from '../../images/shareIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
+import CardDrinks from '../../components/carddrinks/CardDrinks';
+import ListIngreAndMeasu from '../../components/pagesDetails/ListIngreAndMeasu';
+import './FoodRecipeDetails.css';
 
 //  STCOSTA
 function FoodRecipeDetails(props) {
@@ -13,30 +16,11 @@ function FoodRecipeDetails(props) {
     foodDetailById,
   } = useContext(FoodContext);
   const { meals } = foodDetailById;
+  const { match: { params: { recipeid } } } = props;
 
   useEffect(() => {
-    const { match: { params: { recipeid } } } = props;
     getfoodList('id', recipeid);
   }, []);
-
-  const getIngredienteAndMeasure = (() => {
-    const detailsArray = Object.entries(meals[0]);
-    const ingredientsArray = detailsArray
-      .filter((detailsEl) => (
-        (detailsEl[0].includes('strIngredient'))
-        && (detailsEl[1] !== '')
-      ));
-    const measureArray = detailsArray
-      .filter((detailsEl) => (
-        (detailsEl[0].includes('strMeasure'))
-        && (detailsEl[1] !== ' ')
-      ));
-    const IngrAndMeasureArray = ingredientsArray
-      .map((ingredientElem, index) => (
-        (`${ingredientElem[1]} - ${measureArray[index][1]}`)
-      ));
-    return IngrAndMeasureArray;
-  });
 
   const getVideoURL = ((urlVideo) => {
     const videoId = urlVideo.split('=');
@@ -74,19 +58,7 @@ function FoodRecipeDetails(props) {
               <img src={ whiteHeartIcon } alt="white heart" />
             </button>
             <p data-testid="recipe-category">{ meals[0].strCategory }</p>
-            <ul>
-              {
-                getIngredienteAndMeasure()
-                  .map((IngrMeasureElem, index) => (
-                    <li
-                      key={ IngrMeasureElem }
-                      data-testid={ `${index}-ingredient-name-and-measure` }
-                    >
-                      { IngrMeasureElem }
-                    </li>
-                  ))
-              }
-            </ul>
+            <ListIngreAndMeasu productList={ meals[0] } />
             <p data-testid="instructions">{ meals[0].strInstructions }</p>
             <iframe
               data-testid="video"
@@ -94,13 +66,14 @@ function FoodRecipeDetails(props) {
               title="YouTube video player"
               frameBorder="0"
             />
+            <CardDrinks quant={ 6 } dataIdText="-recomendation-card" />
             <button
               data-testid="start-recipe-btn"
               type="button"
-              id="startRecipe"
-              onClick={ () => history.push('/drinks') }
+              className="startRecipe"
+              onClick={ () => history.push(`/foods/${recipeid}/in-progress`) }
             >
-              Start
+              Start Recipe
             </button>
           </>
         )}
