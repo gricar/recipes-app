@@ -1,4 +1,5 @@
 // Feito por Tabata;
+// Tudo movido para FoodProvider (Unico estado global);
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import FoodMainContext from './FoodMainContext';

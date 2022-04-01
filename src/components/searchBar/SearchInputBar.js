@@ -1,25 +1,25 @@
 // Feito por Gabriel: formulário de busca (input text);
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import SearchRadioBar from './SearchRadioBar';
-import fetchFood from '../../services/fetchFood';
-import fetchDrinks from '../../services/fetchDrinks';
+import FoodContext from '../../context/FoodContext';
+import DrinksContext from '../../context/DrinksContext';
 
 function SearchInputBar({ title }) {
   const [searchInputs, setSearchInputs] = useState({
     textSearch: '',
     radioSearch: '',
   });
-  const [arrFromFetch, setArrFromFetch] = useState([]);
 
-  const getMeal = async () => {
+  const { getfoodList } = useContext(FoodContext);
+  const { getDrinksList } = useContext(DrinksContext);
+
+  const getList = () => {
     const { textSearch, radioSearch } = searchInputs;
     if (title === 'Foods') {
-      const foodArr = await fetchFood(radioSearch, textSearch);
-      setArrFromFetch(foodArr);
+      getfoodList(radioSearch, textSearch);
     } else if (title === 'Drinks') {
-      const drinksArr = await fetchDrinks(radioSearch, textSearch);
-      setArrFromFetch(drinksArr);
+      getDrinksList(radioSearch, textSearch);
     }
   };
 
@@ -27,12 +27,12 @@ function SearchInputBar({ title }) {
     const { textSearch, radioSearch } = searchInputs;
     if (radioSearch === 'First-letter') {
       if (textSearch.length === 1) {
-        getMeal();
+        getList();
       } else {
         return global.alert('Your search must have only 1 (one) character');
       }
     }
-    getMeal();
+    getList();
   };
 
   const handleChange = ({ target: { name, value } }) => {
@@ -42,7 +42,6 @@ function SearchInputBar({ title }) {
     });
   };
 
-  console.log(arrFromFetch);
   return (
     <div>
       <form>

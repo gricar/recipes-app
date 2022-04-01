@@ -1,12 +1,12 @@
 // Feito por Tabata;
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import FoodMainContext from '../../context/FoodMainContext';
+import FoodContext from '../../context/FoodContext';
 
 const QTD_RECIPES = 12;
 
 function CardFoods() {
-  const { recipes, recipesByCategory } = useContext(FoodMainContext);
+  const { recipes, recipesByCategory } = useContext(FoodContext);
 
   const filteredRecipes = () => {
     if (recipesByCategory) {
@@ -24,7 +24,7 @@ function CardFoods() {
       }, index) => (
         <Link
           key={ idMeal }
-          style={ { textDecoration: 'none', color: 'black' } }
+          // style={ { textDecoration: 'none', color: 'black' } }
           to={ `/foods/${idMeal}` }
         >
           <div

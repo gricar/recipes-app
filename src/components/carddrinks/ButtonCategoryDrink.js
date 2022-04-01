@@ -1,11 +1,11 @@
 // Feito por Tabata;
 import React, { useContext } from 'react';
-import DrinksMainContext from '../../context/DrinksMainContext';
+import DrinksContext from '../../context/DrinksContext';
 
 const QTD_FILTERS = 5;
 
 function ButtonCategoryFood() {
-  const { categories, filterCategory, setFilterCategory } = useContext(DrinksMainContext);
+  const { categories, filterCategory, setFilterCategory } = useContext(DrinksContext);
 
   const handleClick = ({ target: { name } }) => {
     if (filterCategory === name) {
