@@ -13,11 +13,30 @@ function FoodRecipeDetails(props) {
     foodDetailById,
   } = useContext(FoodContext);
   const { meals } = foodDetailById;
-  console.log(meals);
+
   useEffect(() => {
     const { match: { params: { recipeid } } } = props;
     getfoodList('id', recipeid);
   }, []);
+
+  const getIngredienteAndMeasure = (() => {
+    const detailsArray = Object.entries(meals[0]);
+    const ingredientsArray = detailsArray
+      .filter((detailsEl) => (
+        (detailsEl[0].includes('strIngredient'))
+        && (detailsEl[1] !== '')
+      ));
+    const measureArray = detailsArray
+      .filter((detailsEl) => (
+        (detailsEl[0].includes('strMeasure'))
+        && (detailsEl[1] !== ' ')
+      ));
+    const IngrAndMeasureArray = ingredientsArray
+      .map((ingredientElem, index) => (
+        (`${ingredientElem[1]} - ${measureArray[index][1]}`)
+      ));
+    return IngrAndMeasureArray;
+  });
 
   const getVideoURL = ((urlVideo) => {
     const videoId = urlVideo.split('=');
@@ -56,13 +75,25 @@ function FoodRecipeDetails(props) {
             </button>
             <p data-testid="recipe-category">{ meals[0].strCategory }</p>
             <p data-testid="instructions">{ meals[0].strInstructions }</p>
+            <ul>
+              {
+                getIngredienteAndMeasure()
+                  .map((IngrMeasureElem, index) => (
+                    <li
+                      key={ IngrMeasureElem }
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                    >
+                      { IngrMeasureElem }
+                    </li>
+                  ))
+              }
+            </ul>
             <iframe
               data-testid="video"
               src={ getVideoURL(meals[0].strYoutube) }
               title="YouTube video player"
               frameBorder="0"
             />
-            {/* <iframe title={ meals[0].strMeal } src={ meals[0].strYoutube } /> */}
             <button
               data-testid="start-recipe-btn"
               type="button"
