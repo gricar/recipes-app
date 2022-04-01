@@ -9,6 +9,7 @@ import {
 // STCOSTA
 function FoodProvider({ children }) {
   const [foodListByIngre, setFoodListByIngre] = useState({ meals: [] });
+  const [foodDetailById, setFoodDetailById] = useState({ meals: [] });
   const [foodListByName, setFoodListByName] = useState({ meals: [] });
   const [foodListByFirstLetter, setFoodListByFirstLetter] = useState({ meals: [] });
   const [foodListError, setFoodListError] = useState({ meals: [] });
@@ -25,6 +26,8 @@ function FoodProvider({ children }) {
           setFoodListByIngre(response);
         } else if (searchType === 'Name') {
           setFoodListByName(response);
+        } else if (searchType === 'id') {
+          setFoodDetailById(response);
         } else if (searchType === 'First-letter') {
           setFoodListByFirstLetter(response);
         }
@@ -61,6 +64,8 @@ function FoodProvider({ children }) {
     filterCategory,
     setFilterCategory,
     setRecipesByCategory,
+    foodDetailById,
+    setFoodDetailById,
   };
 
   return (
