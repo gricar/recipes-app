@@ -73,8 +73,7 @@ function FoodRecipeDetails(props) {
             >
               <img src={ whiteHeartIcon } alt="white heart" />
             </button>
-            <p data-testid="recipe-category">{ meals[0].strCategory }</p>
-            <p data-testid="instructions">{ meals[0].strInstructions }</p>
+            <p data-testid="recipe-category">{ meals[0].strCategory }</p>            
             <ul>
               {
                 getIngredienteAndMeasure()
@@ -88,6 +87,7 @@ function FoodRecipeDetails(props) {
                   ))
               }
             </ul>
+            <p data-testid="instructions">{ meals[0].strInstructions }</p>
             <iframe
               data-testid="video"
               src={ getVideoURL(meals[0].strYoutube) }
