@@ -19,6 +19,12 @@ function FoodRecipeDetails(props) {
     getfoodList('id', recipeid);
   }, []);
 
+  const getVideoURL = ((urlVideo) => {
+    const videoId = urlVideo.split('=');
+    const embedURL = (`https://www.youtube.com/embed/${videoId[1]}`);
+    return embedURL;
+  });
+
   return (
     <section>
       {foodDetailById.meals.length > 0
@@ -52,7 +58,7 @@ function FoodRecipeDetails(props) {
             <p data-testid="instructions">{ meals[0].strInstructions }</p>
             <iframe
               data-testid="video"
-              src="https://www.youtube.com/embed/J4D855Q9-jg"
+              src={ getVideoURL(meals[0].strYoutube) }
               title="YouTube video player"
               frameBorder="0"
             />
