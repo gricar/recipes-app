@@ -64,3 +64,25 @@ export const fetchDrinksAccordingCategory = async (category) => {
     return error;
   }
 };
+
+export const fetchFoodListNationalities = async () => {
+  try {
+    const URL_NATIONALITY = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+    const response = await fetch(URL_NATIONALITY);
+    const data = await response.json();
+    return data.meals;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchFoodFilterByNationality = async (area) => {
+  try {
+    const URL_RECIPES_NAT = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`;
+    const response = await fetch(URL_RECIPES_NAT);
+    const data = await response.json();
+    return data.meals;
+  } catch (error) {
+    return error;
+  }
+};
