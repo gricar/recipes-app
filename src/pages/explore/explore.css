@@ -1,0 +1,10 @@
+.exploreButtons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.exploreButtons > button {
+  cursor: pointer;
+  padding: 10px 5px;
+  width: 30%;
+}
