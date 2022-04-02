@@ -72,3 +72,10 @@ export const fetchIngredients = async (type) => {
     return data;
   } catch (error) { return error; }
 };
+
+export const fetchImage = async (type, item) => {
+  try {
+    const response = await fetch(`https://www.the${type}db.com/images/ingredients/${item}-Small.png`);
+    return response.url;
+  } catch (error) { return error; }
+};
