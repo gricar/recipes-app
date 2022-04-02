@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import BottonMenu from '../../components/BottonMenu';
 import Header from '../../components/header/Header';
-import { fetchIngredients } from '../../services/fetchFoodAndDrinkMain';
+import FoodContext from '../../context/FoodContext';
+import {
+  fetchIngredients, fetchFoodsAccordingCategory,
+} from '../../services/fetchFoodAndDrinkMain';
 
 function ExploreFoodsByIngredients() {
+  const { setRecipesByCategory } = useContext(FoodContext);
+
   const [mealIngredients, setMealIngredients] = useState([]);
 
   useEffect(() => {
@@ -16,6 +22,14 @@ function ExploreFoodsByIngredients() {
     getIngredients();
   }, []);
 
+  const history = useHistory();
+
+  const sendToMainPage = async (strIngredient) => {
+    const filteredCategory = await fetchFoodsAccordingCategory(strIngredient);
+    setRecipesByCategory(filteredCategory.meals);
+    history.push('/foods');
+  };
+
   return (
     <div>
       <Header title="Explore Ingredients" searchBtn={ false } />
@@ -25,14 +39,19 @@ function ExploreFoodsByIngredients() {
             mealIngredients.map((ingredient, index) => {
               const { strIngredient } = ingredient;
               return (
-                <div key={ index } data-testid={ `${index}-ingredient-card` }>
+                <button
+                  type="button"
+                  key={ index }
+                  data-testid={ `${index}-ingredient-card` }
+                  onClick={ () => sendToMainPage(strIngredient) }
+                >
                   <img
                     src={ `https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png` }
                     alt={ `${strIngredient} img` }
                     data-testid={ `${index}-card-img` }
                   />
                   <p data-testid={ `${index}-card-name` }>{strIngredient}</p>
-                </div>
+                </button>
               );
             })
           )
