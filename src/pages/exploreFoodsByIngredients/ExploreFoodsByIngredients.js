@@ -4,8 +4,9 @@ import BottonMenu from '../../components/BottonMenu';
 import Header from '../../components/header/Header';
 import FoodContext from '../../context/FoodContext';
 import {
-  fetchIngredients, fetchFoodsAccordingCategory,
+  fetchIngredients, fetchByIngredient,
 } from '../../services/fetchFoodAndDrinkMain';
+import './exploreFoodsByIngredients.css';
 
 function ExploreFoodsByIngredients() {
   const { setRecipesByCategory } = useContext(FoodContext);
@@ -25,7 +26,7 @@ function ExploreFoodsByIngredients() {
   const history = useHistory();
 
   const sendToMainPage = async (strIngredient) => {
-    const filteredCategory = await fetchFoodsAccordingCategory(strIngredient);
+    const filteredCategory = await fetchByIngredient('meal', strIngredient);
     setRecipesByCategory(filteredCategory.meals);
     history.push('/foods');
   };
@@ -33,27 +34,25 @@ function ExploreFoodsByIngredients() {
   return (
     <div>
       <Header title="Explore Ingredients" searchBtn={ false } />
-      <div>
+      <div className="exploreByIngredients">
         {
           mealIngredients && (
-            mealIngredients.map((ingredient, index) => {
-              const { strIngredient } = ingredient;
-              return (
-                <button
-                  type="button"
-                  key={ index }
-                  data-testid={ `${index}-ingredient-card` }
-                  onClick={ () => sendToMainPage(strIngredient) }
-                >
-                  <img
-                    src={ `https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png` }
-                    alt={ `${strIngredient} img` }
-                    data-testid={ `${index}-card-img` }
-                  />
-                  <p data-testid={ `${index}-card-name` }>{strIngredient}</p>
-                </button>
-              );
-            })
+            mealIngredients.map(({ strIngredient }, index) => (
+              <button
+                type="button"
+                className="exploreByIngredientsButton"
+                key={ index }
+                data-testid={ `${index}-ingredient-card` }
+                onClick={ () => sendToMainPage(strIngredient) }
+              >
+                <img
+                  src={ `https://www.themealdb.com/images/ingredients/${strIngredient}-Small.png` }
+                  alt={ `${strIngredient} img` }
+                  data-testid={ `${index}-card-img` }
+                />
+                <p data-testid={ `${index}-card-name` }>{strIngredient}</p>
+              </button>
+            ))
           )
         }
       </div>

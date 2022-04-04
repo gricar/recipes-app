@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import BottonMenu from '../../components/BottonMenu';
 import Header from '../../components/header/Header';
-import { fetchIngredients } from '../../services/fetchFoodAndDrinkMain';
+import DrinksContext from '../../context/DrinksContext';
+import {
+  fetchIngredients, fetchByIngredient,
+} from '../../services/fetchFoodAndDrinkMain';
+import '../exploreFoodsByIngredients/exploreFoodsByIngredients.css';
 
 function ExploreDrinksByIngredients() {
+  const { setDrinksByCategory } = useContext(DrinksContext);
+
   const [drinksIngredients, setDrinksIngredients] = useState([]);
 
   useEffect(() => {
@@ -16,25 +23,36 @@ function ExploreDrinksByIngredients() {
     getIngredients();
   }, []);
 
+  const history = useHistory();
+
+  const sendToMainPage = async (strIngredient) => {
+    const filteredCategory = await fetchByIngredient('cocktail', strIngredient);
+    setDrinksByCategory(filteredCategory.drinks);
+    history.push('/drinks');
+  };
+
   return (
     <div>
       <Header title="Explore Ingredients" searchBtn={ false } />
-      <div>
+      <div className="exploreByIngredients">
         {
           drinksIngredients && (
-            drinksIngredients.map((ingredient, index) => {
-              const { strIngredient1 } = ingredient;
-              return (
-                <div key={ index } data-testid={ `${index}-ingredient-card` }>
-                  <img
-                    src={ `https://www.thecocktaildb.com/images/ingredients/${strIngredient1}-Small.png` }
-                    alt={ `${strIngredient1} img` }
-                    data-testid={ `${index}-card-img` }
-                  />
-                  <p data-testid={ `${index}-card-name` }>{strIngredient1}</p>
-                </div>
-              );
-            })
+            drinksIngredients.map(({ strIngredient1 }, index) => (
+              <button
+                type="button"
+                className="exploreByIngredientsButton"
+                key={ index }
+                data-testid={ `${index}-ingredient-card` }
+                onClick={ () => sendToMainPage(strIngredient1) }
+              >
+                <img
+                  src={ `https://www.thecocktaildb.com/images/ingredients/${strIngredient1}-Small.png` }
+                  alt={ `${strIngredient1} img` }
+                  data-testid={ `${index}-card-img` }
+                />
+                <p data-testid={ `${index}-card-name` }>{strIngredient1}</p>
+              </button>
+            ))
           )
         }
       </div>

@@ -94,3 +94,13 @@ export const fetchFoodFilterByNationality = async (area) => {
     return error;
   }
 };
+
+export const fetchByIngredient = async (type, ingred) => {
+  try {
+    const resp = await fetch(`https://www.the${type}db.com/api/json/v1/1/filter.php?i=${ingred}`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
