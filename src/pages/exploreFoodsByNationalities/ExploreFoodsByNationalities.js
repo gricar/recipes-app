@@ -16,8 +16,8 @@ function ExploreFoodsByNationalities() {
 
   useEffect(() => {
     (async () => {
-      const noFilter = await fetchFoodMain();
-      setRecipes(noFilter.meals);
+      const { meals } = await fetchFoodMain();
+      setRecipes(meals);
       const listNat = await fetchFoodListNationalities();
       setNationalityList(listNat);
     })();
@@ -25,13 +25,11 @@ function ExploreFoodsByNationalities() {
 
   const handleChange = async ({ target: { value } }) => {
     if (value !== 'All') {
-      console.log('caiu no if: ', value);
       const recipesByNat = await fetchFoodFilterByNationality(value);
       setRecipes(recipesByNat);
     } else {
-      console.log('ativou foodMain: ', value);
-      const noFilter = await fetchFoodMain();
-      setRecipes(noFilter.meals);
+      const { meals } = await fetchFoodMain();
+      setRecipes(meals);
     }
   };
 
