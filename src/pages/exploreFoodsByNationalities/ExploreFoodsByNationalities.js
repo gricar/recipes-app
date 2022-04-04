@@ -3,65 +3,68 @@ import { Link } from 'react-router-dom';
 import BottonMenu from '../../components/BottonMenu';
 import Header from '../../components/header/Header';
 import {
+  fetchFoodMain,
   fetchFoodListNationalities,
   fetchFoodFilterByNationality,
-  fetchFoodMain,
 } from '../../services/fetchFoodAndDrinkMain';
 
 const QTD_RECIPES = 12;
 
 function ExploreFoodsByNationalities() {
-  const [nacionality, setNacionality] = useState('American');
-  const [nacionalityList, setNacionalityList] = useState([]);
-  const [recipesNationalityList, setRecipesNationalityList] = useState([]);
-  const [recipesNoFilter, setRecipesNoFilter] = useState([]);
+  const [nationalityList, setNationalityList] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     (async () => {
-      setNacionalityList(await fetchFoodListNationalities());
-      setRecipesNationalityList(await fetchFoodFilterByNationality(nacionality));
-      setRecipesNoFilter(await fetchFoodMain());
+      const noFilter = await fetchFoodMain();
+      setRecipes(noFilter.meals);
+      const listNat = await fetchFoodListNationalities();
+      setNationalityList(listNat);
     })();
-  }, [nacionality]);
+  }, []);
 
-  const recipes = nacionality === 'All' ? recipesNoFilter.meals : recipesNationalityList;
+  const handleChange = async ({ target: { value } }) => {
+    if (value !== 'All') {
+      console.log('caiu no if: ', value);
+      const recipesByNat = await fetchFoodFilterByNationality(value);
+      setRecipes(recipesByNat);
+    } else {
+      console.log('ativou foodMain: ', value);
+      const noFilter = await fetchFoodMain();
+      setRecipes(noFilter.meals);
+    }
+  };
 
   return (
     <div>
       <Header title="Explore Nationalities" />
-
       <form>
         <select
           data-testid="explore-by-nationality-dropdown"
-          value={ nacionality }
-          onChange={ ({ target: { value } }) => setNacionality(value) }
+          onChange={ handleChange }
         >
           <option
             data-testid="All-option"
           >
             All
           </option>
-          {
-            nacionalityList.length
-              && nacionalityList.map((el) => {
-                const nation = Object.values(el);
-                return (
-                  <option
-                    key={ nation }
-                    data-testid={ `${nation}-option` }
-                  >
-                    { nation }
-                  </option>
-                );
-              })
-          }
+          { nationalityList && nationalityList.map((element) => {
+            const nation = Object.values(element);
+            return (
+              <option
+                key={ nation }
+                data-testid={ `${nation}-option` }
+              >
+                { nation }
+              </option>
+            );
+          }) }
         </select>
       </form>
 
       {
-        recipes.length && recipes
-          .slice(0, QTD_RECIPES)
-          .map(({
+        recipes && recipes
+          .slice(0, QTD_RECIPES).map(({
             strMeal,
             strMealThumb,
             idMeal,

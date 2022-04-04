@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class NotFound extends Component {
   render() {
-    return (<p>oi do NotFound temporário</p>);
+    return (<p>Not Found</p>);
   }
 }
 
