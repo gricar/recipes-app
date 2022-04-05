@@ -34,7 +34,7 @@ function ExploreFoodsByNationalities() {
   };
 
   return (
-    <div>
+    <section>
       <Header title="Explore Nationalities" />
       <form>
         <select
@@ -90,9 +90,8 @@ function ExploreFoodsByNationalities() {
             </Link>
           ))
       }
-
       <BottonMenu />
-    </div>
+    </section>
   );
 }
 

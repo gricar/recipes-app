@@ -1,12 +1,14 @@
 // Feito por Tabata: formulário para inserção de e-mail e senha, mais validação dos campos preenchidos para habilidar o botão "enter"
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router';
 import { setStorage } from '../../services/SetAndGetStorage';
 import './Login.css';
 
 function Login({ history }) {
   const [user, setUser] = useState({ email: '', password: '' });
   const [isDisabled, setIsDisabled] = useState(true);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     const { email, password } = user;
@@ -31,8 +33,12 @@ function Login({ history }) {
     setStorage('cocktailsToken', 1);
     setStorage('user', { email: user.email });
     history.push('/foods');
+    setRedirect(true);
   };
 
+  if (redirect) {
+    return <Redirect to="/foods" />;
+  }
   return (
     <section className="container-login">
       <form>
