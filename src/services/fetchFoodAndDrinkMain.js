@@ -65,6 +65,14 @@ export const fetchDrinksAccordingCategory = async (category) => {
   }
 };
 
+export const fetchIngredients = async (type) => {
+  try {
+    const response = await fetch(`https://www.the${type}db.com/api/json/v1/1/list.php?i=list`);
+    const data = response.json();
+    return data;
+  } catch (error) { return error; }
+};
+
 export const fetchFoodListNationalities = async () => {
   try {
     const URL_NATIONALITY = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
@@ -82,6 +90,16 @@ export const fetchFoodFilterByNationality = async (area) => {
     const response = await fetch(URL_RECIPES_NAT);
     const data = await response.json();
     return data.meals;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchByIngredient = async (type, ingred) => {
+  try {
+    const resp = await fetch(`https://www.the${type}db.com/api/json/v1/1/filter.php?i=${ingred}`);
+    const data = await resp.json();
+    return data;
   } catch (error) {
     return error;
   }

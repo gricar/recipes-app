@@ -101,7 +101,7 @@ function Header({ title, searchBtn = true }) {
   }, [drinksListByFirstLetter, history, setDrinksByCategory]);
 
   return (
-    <div>
+    <div className="header-container">
       <header className="header">
         <Link to="/profile" data-testid="profile-top-btn" src={ profileIcon }>
           <img
