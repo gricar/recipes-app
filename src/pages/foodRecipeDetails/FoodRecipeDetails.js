@@ -1,32 +1,52 @@
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import FoodContext from '../../context/FoodContext';
 import shareIcon from '../../images/shareIcon.svg';
-import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import CardDrinks from '../../components/carddrinks/CardDrinks';
 import ListIngreAndMeasu from '../../components/pagesDetails/ListIngreAndMeasu';
 import './FoodRecipeDetails.css';
+import ButtonRemoveFavorite from '../../components/buttonRemoveFav/ButtonRemoveFavorite';
+import ButtonAddFavorite from '../../components/buttonAddFav/ButtonAddFavorite';
+import { getStorage } from '../../services/SetAndGetStorage';
 
 //  STCOSTA
 function FoodRecipeDetails(props) {
+  const [favoriteStatus, setFavoriteStatus] = useState();
   const history = useHistory();
+
   const {
     getfoodList,
     foodDetailById,
+    favoriteList,
   } = useContext(FoodContext);
+
   const { meals } = foodDetailById;
   const { match: { params: { recipeid } } } = props;
 
-  useEffect(() => {
-    getfoodList('id', recipeid);
-  }, []);
+  const checkFavorite = () => {
+    const favoriteStorage = getStorage('favoriteRecipes');
+    if (favoriteStorage) {
+      const statusFavorite = (favoriteStorage.find((favoriteItem) => (
+        recipeid === favoriteItem.id)));
+      console.log(statusFavorite);
+      setFavoriteStatus(statusFavorite);
+    }
+  };
 
   const getVideoURL = ((urlVideo) => {
     const videoId = urlVideo.split('=');
     const embedURL = (`https://www.youtube.com/embed/${videoId[1]}`);
     return embedURL;
   });
+
+  useEffect(() => {
+    getfoodList('id', recipeid);
+  }, []);
+
+  useEffect(() => {
+    checkFavorite();
+  }, [favoriteList]);
 
   return (
     <section>
@@ -48,15 +68,11 @@ function FoodRecipeDetails(props) {
             >
               <img src={ shareIcon } alt="share" />
             </button>
-            <button
-              src="whiteHeartIcon"
-              data-testid="favorite-btn"
-              type="button"
-              id="favorite"
-              onClick={ () => history.push('/foods') }
-            >
-              <img src={ whiteHeartIcon } alt="white heart" />
-            </button>
+            {
+              favoriteStatus
+                ? <ButtonRemoveFavorite productList={ meals[0] } typeItem="food" />
+                : <ButtonAddFavorite productList={ meals[0] } typeItem="food" />
+            }
             <p data-testid="recipe-category">{ meals[0].strCategory }</p>
             <ListIngreAndMeasu productList={ meals[0] } />
             <p data-testid="instructions">{ meals[0].strInstructions }</p>

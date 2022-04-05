@@ -13,6 +13,7 @@ function FoodProvider({ children }) {
   const [foodListByName, setFoodListByName] = useState({ meals: [] });
   const [foodListByFirstLetter, setFoodListByFirstLetter] = useState({ meals: [] });
   const [foodListError, setFoodListError] = useState({ meals: [] });
+  const [favoriteList, setFavoriteList] = useState();
   // tabata
   const [recipes, setRecipes] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -66,6 +67,8 @@ function FoodProvider({ children }) {
     setRecipesByCategory,
     foodDetailById,
     setFoodDetailById,
+    setFavoriteList,
+    favoriteList,
   };
 
   return (

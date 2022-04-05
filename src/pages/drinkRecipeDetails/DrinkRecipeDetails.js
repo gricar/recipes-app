@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import DrinksContext from '../../context/DrinksContext';
+import FoodContext from '../../context/FoodContext';
 import shareIcon from '../../images/shareIcon.svg';
-import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import CardFoods from '../../components/cardfood/CardFoods';
 import ListIngreAndMeasu from '../../components/pagesDetails/ListIngreAndMeasu';
 import './DrinkRecipeDetails.css';
+import ButtonAddFavorite from '../../components/buttonAddFav/ButtonAddFavorite';
+import ButtonRemoveFavorite from '../../components/buttonRemoveFav/ButtonRemoveFavorite';
+import { getStorage } from '../../services/SetAndGetStorage';
 
 function DrinkRecipeDetails(props) {
   const history = useHistory();
@@ -14,12 +17,32 @@ function DrinkRecipeDetails(props) {
     getDrinksList,
     drinksDetailById,
   } = useContext(DrinksContext);
+
+  const {
+    favoriteList,
+  } = useContext(FoodContext);
+
+  const [favoriteStatus, setFavoriteStatus] = useState();
   const { drinks } = drinksDetailById;
   const { match: { params: { recipeid } } } = props;
+
+  const checkFavorite = () => {
+    const favoriteStorage = getStorage('favoriteRecipes');
+    if (favoriteStorage) {
+      const statusFavorite = (favoriteStorage.find((favoriteItem) => (
+        recipeid === favoriteItem.id)));
+      console.log(statusFavorite);
+      setFavoriteStatus(statusFavorite);
+    }
+  };
 
   useEffect(() => {
     getDrinksList('id', recipeid);
   }, []);
+
+  useEffect(() => {
+    checkFavorite();
+  }, [favoriteList]);
 
   return (
     <section>
@@ -41,15 +64,11 @@ function DrinkRecipeDetails(props) {
             >
               <img src={ shareIcon } alt="share" />
             </button>
-            <button
-              src="whiteHeartIcon"
-              data-testid="favorite-btn"
-              type="button"
-              id="favorite"
-              onClick={ () => history.push('/drinks') }
-            >
-              <img src={ whiteHeartIcon } alt="white heart" />
-            </button>
+            {
+              favoriteStatus
+                ? <ButtonRemoveFavorite productList={ drinks[0] } typeItem="drink" />
+                : <ButtonAddFavorite productList={ drinks[0] } typeItem="drink" />
+            }
             <p data-testid="recipe-category">{ drinks[0].strAlcoholic }</p>
             <ListIngreAndMeasu productList={ drinks[0] } />
             <p data-testid="instructions">{ drinks[0].strInstructions }</p>
