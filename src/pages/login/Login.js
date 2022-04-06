@@ -41,32 +41,39 @@ function Login({ history }) {
   }
   return (
     <section className="container-login">
-      <form>
-        <input
-          data-testid="email-input"
-          type="email"
-          name="email"
-          value={ user.email }
-          placeholder="Digite seu e-mail"
-          onChange={ handleChange }
-        />
-        <input
-          data-testid="password-input"
-          type="password"
-          name="password"
-          placeholder="Digite sua senha"
-          value={ user.password }
-          onChange={ handleChange }
-        />
-        <button
-          data-testid="login-submit-btn"
-          type="button"
-          disabled={ isDisabled }
-          onClick={ handleClick }
-        >
-          Enter
-        </button>
-      </form>
+      <div>
+        <form>
+          <input
+            className="input-text"
+            aria-label="Email"
+            aria-describedby="basic-addon1"
+            data-testid="email-input"
+            type="email"
+            name="email"
+            value={ user.email }
+            placeholder="Digite seu e-mail"
+            onChange={ handleChange }
+          />
+          <input
+            className="input-text"
+            data-testid="password-input"
+            type="password"
+            name="password"
+            placeholder="Digite sua senha"
+            value={ user.password }
+            onChange={ handleChange }
+          />
+          <button
+            className="button-pages"
+            data-testid="login-submit-btn"
+            type="button"
+            disabled={ isDisabled }
+            onClick={ handleClick }
+          >
+            Enter
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
