@@ -5,7 +5,6 @@ import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import FoodContext from '../../context/FoodContext';
 
 function ButtonAddFavorite({ productList, typeItem }) {
-  console.log(typeItem);
   const {
     setFavoriteList,
   } = useContext(FoodContext);
@@ -48,7 +47,6 @@ function ButtonAddFavorite({ productList, typeItem }) {
         image: strDrinkThumb,
       };
     }
-    console.log(newFavorite);
     if (favoriteStorage) {
       favoriteStorage.push(newFavorite);
     } else {

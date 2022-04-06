@@ -23,26 +23,58 @@ function DrinkRecipeDetails(props) {
   } = useContext(FoodContext);
 
   const [favoriteStatus, setFavoriteStatus] = useState();
+  const [msgButtonRecipe, setMsgButtonRecipe] = useState('Start Recipe');
+  const [showButtonRecipe, setShowButtonRecipe] = useState(false);
+  const [msgShare, setMsgShare] = useState('');
   const { drinks } = drinksDetailById;
   const { match: { params: { recipeid } } } = props;
+  const { match: { url } } = props;
 
   const checkFavorite = () => {
     const favoriteStorage = getStorage('favoriteRecipes');
     if (favoriteStorage) {
       const statusFavorite = (favoriteStorage.find((favoriteItem) => (
         recipeid === favoriteItem.id)));
-      console.log(statusFavorite);
       setFavoriteStatus(statusFavorite);
+    }
+  };
+
+  const checkInProgress = () => {
+    const inProgressList = getStorage('inProgressRecipes');
+    if (inProgressList) {
+      const isInProgress = Object.keys(inProgressList.cocktails)
+        .find((productEl) => (productEl === recipeid));
+      if (isInProgress) {
+        setMsgButtonRecipe('Continue Recipe');
+      }
+    }
+  };
+
+  const checkDoneRecipe = () => {
+    const doneRecipeList = getStorage('doneRecipes');
+    if (doneRecipeList) {
+      const isDoneRecipe = doneRecipeList
+        .find((productEl) => (productEl.id === recipeid));
+      if (isDoneRecipe) {
+        setShowButtonRecipe(true);
+      }
     }
   };
 
   useEffect(() => {
     getDrinksList('id', recipeid);
+    checkInProgress();
+    checkDoneRecipe();
   }, []);
 
   useEffect(() => {
     checkFavorite();
   }, [favoriteList]);
+
+  const share = (urlToShare) => {
+    navigator.clipboard.writeText(`http://localhost:3000${urlToShare}`);
+    setMsgShare('Link copied!');
+  };
 
   return (
     <section>
@@ -60,10 +92,11 @@ function DrinkRecipeDetails(props) {
               data-testid="share-btn"
               type="button"
               id="shareIcon"
-              onClick={ () => history.push('/drinks') }
+              onClick={ () => share(url) }
             >
               <img src={ shareIcon } alt="share" />
             </button>
+            <p>{ msgShare }</p>
             {
               favoriteStatus
                 ? <ButtonRemoveFavorite productList={ drinks[0] } typeItem="drink" />
@@ -76,10 +109,11 @@ function DrinkRecipeDetails(props) {
             <button
               data-testid="start-recipe-btn"
               type="button"
+              hidden={ showButtonRecipe }
               className="startRecipe"
               onClick={ () => history.push(`/drinks/${recipeid}/in-progress`) }
             >
-              Start Recipe
+              { msgButtonRecipe }
             </button>
           </>
         )}
@@ -89,6 +123,7 @@ function DrinkRecipeDetails(props) {
 
 DrinkRecipeDetails.propTypes = {
   match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
     params: PropTypes.shape({
       recipeid: PropTypes.string.isRequired,
     }).isRequired,

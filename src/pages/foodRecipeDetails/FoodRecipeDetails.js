@@ -3,16 +3,19 @@ import { useHistory } from 'react-router-dom';
 import React, { useEffect, useContext, useState } from 'react';
 import FoodContext from '../../context/FoodContext';
 import shareIcon from '../../images/shareIcon.svg';
-import CardDrinks from '../../components/carddrinks/CardDrinks';
 import ListIngreAndMeasu from '../../components/pagesDetails/ListIngreAndMeasu';
 import './FoodRecipeDetails.css';
 import ButtonRemoveFavorite from '../../components/buttonRemoveFav/ButtonRemoveFavorite';
 import ButtonAddFavorite from '../../components/buttonAddFav/ButtonAddFavorite';
 import { getStorage } from '../../services/SetAndGetStorage';
+import CardFoodsCarrousel from '../../components/cardCarouselFood/CardCarouselFood';
 
 //  STCOSTA
 function FoodRecipeDetails(props) {
   const [favoriteStatus, setFavoriteStatus] = useState();
+  const [showButtonRecipe, setShowButtonRecipe] = useState(false);
+  const [msgButtonRecipe, setMsgButtonRecipe] = useState('Start Recipe');
+  const [msgShare, setMsgShare] = useState('');
   const history = useHistory();
 
   const {
@@ -23,14 +26,36 @@ function FoodRecipeDetails(props) {
 
   const { meals } = foodDetailById;
   const { match: { params: { recipeid } } } = props;
+  const { match: { url } } = props;
 
   const checkFavorite = () => {
     const favoriteStorage = getStorage('favoriteRecipes');
     if (favoriteStorage) {
       const statusFavorite = (favoriteStorage.find((favoriteItem) => (
         recipeid === favoriteItem.id)));
-      console.log(statusFavorite);
       setFavoriteStatus(statusFavorite);
+    }
+  };
+
+  const checkInProgress = () => {
+    const inProgressList = getStorage('inProgressRecipes');
+    if (inProgressList) {
+      const isInProgress = Object.keys(inProgressList.meals)
+        .find((productEl) => (productEl === recipeid));
+      if (isInProgress) {
+        setMsgButtonRecipe('Continue Recipe');
+      }
+    }
+  };
+
+  const checkDoneRecipe = () => {
+    const doneRecipeList = getStorage('doneRecipes');
+    if (doneRecipeList) {
+      const isDoneRecipe = doneRecipeList
+        .find((productEl) => (productEl.id === recipeid));
+      if (isDoneRecipe) {
+        setShowButtonRecipe(true);
+      }
     }
   };
 
@@ -40,8 +65,15 @@ function FoodRecipeDetails(props) {
     return embedURL;
   });
 
+  const share = (urlToShare) => {
+    navigator.clipboard.writeText(`http://localhost:3000${urlToShare}`);
+    setMsgShare('Link copied!');
+  };
+
   useEffect(() => {
     getfoodList('id', recipeid);
+    checkInProgress();
+    checkDoneRecipe();
   }, []);
 
   useEffect(() => {
@@ -64,10 +96,11 @@ function FoodRecipeDetails(props) {
               data-testid="share-btn"
               type="button"
               id="shareIcon"
-              onClick={ () => history.push('/foods') }
+              onClick={ () => share(url) }
             >
               <img src={ shareIcon } alt="share" />
             </button>
+            <p>{ msgShare }</p>
             {
               favoriteStatus
                 ? <ButtonRemoveFavorite productList={ meals[0] } typeItem="food" />
@@ -82,14 +115,15 @@ function FoodRecipeDetails(props) {
               title="YouTube video player"
               frameBorder="0"
             />
-            <CardDrinks quant={ 6 } dataIdText="-recomendation-card" />
+            <CardFoodsCarrousel quant={ 6 } dataIdText="-recomendation-card" />
             <button
               data-testid="start-recipe-btn"
               type="button"
+              hidden={ showButtonRecipe }
               className="startRecipe"
               onClick={ () => history.push(`/foods/${recipeid}/in-progress`) }
             >
-              Start Recipe
+              { msgButtonRecipe }
             </button>
           </>
         )}
@@ -99,6 +133,7 @@ function FoodRecipeDetails(props) {
 
 FoodRecipeDetails.propTypes = {
   match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
     params: PropTypes.shape({
       recipeid: PropTypes.string.isRequired,
     }).isRequired,
