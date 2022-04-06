@@ -24,6 +24,7 @@ function CardFoods({ quant, dataIdText }) {
         strMeal,
       }, index) => (
         <Link
+          className="link-card"
           key={ idMeal }
           // style={ { textDecoration: 'none', color: 'black' } }
           to={ `/foods/${idMeal}` }

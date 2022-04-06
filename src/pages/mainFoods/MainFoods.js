@@ -8,7 +8,7 @@ import './MainFoods.css';
 
 function MainFoods() {
   return (
-    <section>
+    <section className="main-container">
       <Header title="Foods" />
       <ButtonCategoryFood />
       <CardFoods quant={ 12 } dataIdText="-recipe-card" />
