@@ -4,13 +4,14 @@ import React, { useEffect, useContext, useState } from 'react';
 import DrinksContext from '../../context/DrinksContext';
 import FoodContext from '../../context/FoodContext';
 import shareIcon from '../../images/shareIcon.svg';
-import CardFoods from '../../components/cardfood/CardFoods';
 import ListIngreAndMeasu from '../../components/pagesDetails/ListIngreAndMeasu';
 import './DrinkRecipeDetails.css';
 import ButtonAddFavorite from '../../components/buttonAddFav/ButtonAddFavorite';
 import ButtonRemoveFavorite from '../../components/buttonRemoveFav/ButtonRemoveFavorite';
 import { getStorage } from '../../services/SetAndGetStorage';
+import CardFoodsCarousel from '../../components/cardCarousel/CardFoodsCarousel';
 
+//  feito por Suéli
 function DrinkRecipeDetails(props) {
   const history = useHistory();
   const {
@@ -105,7 +106,7 @@ function DrinkRecipeDetails(props) {
             <p data-testid="recipe-category">{ drinks[0].strAlcoholic }</p>
             <ListIngreAndMeasu productList={ drinks[0] } />
             <p data-testid="instructions">{ drinks[0].strInstructions }</p>
-            <CardFoods quant={ 6 } dataIdText="-recomendation-card" />
+            <CardFoodsCarousel quant={ 6 } dataIdText="-recomendation-card" />
             <button
               data-testid="start-recipe-btn"
               type="button"

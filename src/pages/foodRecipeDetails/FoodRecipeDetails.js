@@ -8,7 +8,7 @@ import './FoodRecipeDetails.css';
 import ButtonRemoveFavorite from '../../components/buttonRemoveFav/ButtonRemoveFavorite';
 import ButtonAddFavorite from '../../components/buttonAddFav/ButtonAddFavorite';
 import { getStorage } from '../../services/SetAndGetStorage';
-import CardFoodsCarrousel from '../../components/cardCarouselFood/CardCarouselFood';
+import CardDrinksCarousel from '../../components/cardCarousel/CardDrinksCarousel';
 
 //  STCOSTA
 function FoodRecipeDetails(props) {
@@ -115,7 +115,7 @@ function FoodRecipeDetails(props) {
               title="YouTube video player"
               frameBorder="0"
             />
-            <CardFoodsCarrousel quant={ 6 } dataIdText="-recomendation-card" />
+            <CardDrinksCarousel quant={ 6 } dataIdText="-recomendation-card" />
             <button
               data-testid="start-recipe-btn"
               type="button"
