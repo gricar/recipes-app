@@ -1,0 +1,30 @@
+.search-bar-container {
+  align-items: center;
+  animation: fadeInOpacity 1s ease-in;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeInOpacity {
+
+  0% { opacity: 0.05;}
+
+  100% { opacity: 1; }
+}
+
+.input-search {
+  background-color: none;
+  border: 1px solid var(--color0);
+  border-radius: 5px;
+  color: var(--color2);
+  font-family: Open Sans , sans-serif;
+  height: 2em;
+  letter-spacing: 1px;
+  margin-bottom: 0.5em;
+  width: 280px;
+}
+
+.input-search:focus {
+  box-shadow: 0 1px 8px white;
+  outline: none;
+}

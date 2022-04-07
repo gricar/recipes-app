@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SearchRadioBar from './SearchRadioBar';
 import FoodContext from '../../context/FoodContext';
 import DrinksContext from '../../context/DrinksContext';
+import './searchBar.css';
 
 function SearchInputBar({ title }) {
   const [searchInputs, setSearchInputs] = useState({
@@ -43,22 +44,21 @@ function SearchInputBar({ title }) {
   };
 
   return (
-    <div>
-      <form>
-        <input
-          data-testid="search-input"
-          type="text"
-          name="textSearch"
-          placeholder="Search recipe"
-          value={ searchInputs.textSearch }
-          onChange={ handleChange }
-        />
-        <SearchRadioBar
-          handleChange={ handleChange }
-          handleSearchBtn={ handleSearchBtn }
-        />
-      </form>
-    </div>
+    <form className="search-bar-container">
+      <input
+        data-testid="search-input"
+        type="text"
+        name="textSearch"
+        className="input-search"
+        placeholder="Search recipe"
+        value={ searchInputs.textSearch }
+        onChange={ handleChange }
+      />
+      <SearchRadioBar
+        handleChange={ handleChange }
+        handleSearchBtn={ handleSearchBtn }
+      />
+    </form>
   );
 }
 
