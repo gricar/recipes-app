@@ -16,6 +16,7 @@
   background-color: none;
   border: 1px solid var(--color0);
   border-radius: 5px;
+  color: var(--color2);
   font-family: Open Sans , sans-serif;
   height: 2em;
   letter-spacing: 1px;

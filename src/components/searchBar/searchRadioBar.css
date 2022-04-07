@@ -11,6 +11,7 @@
 }
 
 .input-radio {
+  color: var(--color2);
   cursor: pointer;
 }
 
@@ -20,7 +21,7 @@
 }
 
 .search-container button {
-  background-color: var(--color0);
+  background-color: var(--color4);
   border: none;
   border-radius: 5px;
   color: white;

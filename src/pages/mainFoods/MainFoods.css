@@ -14,7 +14,7 @@
 }
 
 .container-button-category button {
-  color: var(--color1);
+  color: var(--color2);
   font-family: Open Sans , sans-serif;
   font-weight: 600;
   letter-spacing: 1px;
@@ -48,6 +48,7 @@
 }
 
 .card p {
+  color: var(--color2);
   flex: 1;
   font-family: Open Sans , sans-serif;
   font-weight: 800;
