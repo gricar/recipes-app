@@ -4,6 +4,7 @@
   --color2: #023047;
   --color3: #ffb703;
   --color4: #fb8500;
+  --color5: #00000085;
 }
 
 body {
@@ -13,6 +14,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./images/bg-login2.jpg');
+  background-repeat: repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 code {

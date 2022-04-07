@@ -1,7 +1,6 @@
 .main-container {
-  background-image: url('../../images/bg-login2.jpg')/*  , linear-gradient
-    (to bottom , rgba(0, 0, 0, 0.6) 0% , rgba(0, 0, 0, 0.6) 100%) */;
-  background-size: cover;
+  background-color: var(--color5);
+  padding: 15px 0;
 }
 
 .container-button-category {

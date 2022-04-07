@@ -2,14 +2,41 @@
   margin: 0;
 }
 
-.profile {
+.container-profile {
   align-items: center;
   display: flex;
-  flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   justify-content: center;
 }
 
+.profile {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.512);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: center;
+  width: 80vw;
+}
+
 .profile button {
-  width: 50%;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: var(--color1);
+  font-family: Open Sans , sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 5px 23px;
+  padding: 10px;
+  width: 70%;
+}
+
+.profile p {
+  background-color: white;
+  border-radius: 5px;
+  color: var(--color4);
+  margin-bottom: 1cm;
+  padding: 8px;
 }

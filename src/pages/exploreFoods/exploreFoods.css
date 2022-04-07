@@ -1,11 +1,19 @@
 .exploreFoods {
+  align-items: center;
+  background-color: var(--color5);
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  height: 80vh;
+  padding: 1.8cm 0;
 }
 
 .exploreFoods > button {
+  color: var(--color2);
   cursor: pointer;
-  margin-top: 20px;
-  padding: 10px 5px;
-  width: 30%;
+  font-family: Open Sans , sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 10px 3px;
+  padding: 10px 1px;
+  width: 70%;
 }

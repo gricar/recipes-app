@@ -7,6 +7,8 @@ import {
   fetchFoodListNationalities,
   fetchFoodFilterByNationality,
 } from '../../services/fetchFoodAndDrinkMain';
+import './ExploreByNationality.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const QTD_RECIPES = 12;
 
@@ -34,10 +36,11 @@ function ExploreFoodsByNationalities() {
   };
 
   return (
-    <section>
+    <section className="container-explore-nation">
       <Header title="Explore Nationalities" />
       <form>
         <select
+          className="select-nation"
           data-testid="explore-by-nationality-dropdown"
           onChange={ handleChange }
         >
@@ -60,36 +63,39 @@ function ExploreFoodsByNationalities() {
         </select>
       </form>
 
-      {
-        recipes && recipes
-          .slice(0, QTD_RECIPES).map(({
-            strMeal,
-            strMealThumb,
-            idMeal,
-          }, index) => (
-            <Link
-              key={ idMeal }
-              style={ { textDecoration: 'none', color: 'black' } }
-              to={ `/foods/${idMeal}` }
-            >
-              <div
-                data-testid={ `${index}-recipe-card` }
+      <section>
+        {
+          recipes && recipes
+            .slice(0, QTD_RECIPES).map(({
+              strMeal,
+              strMealThumb,
+              idMeal,
+            }, index) => (
+              <Link
+                key={ idMeal }
+                style={ { textDecoration: 'none', color: 'black' } }
+                to={ `/foods/${idMeal}` }
               >
-                <img
-                  src={ strMealThumb }
-                  alt={ `receita de${strMeal}` }
-                  width="100"
-                  data-testid={ `${index}-card-img` }
-                />
-                <p
-                  data-testid={ `${index}-card-name` }
+                <div
+                  className="card"
+                  data-testid={ `${index}-recipe-card` }
                 >
-                  { strMeal }
-                </p>
-              </div>
-            </Link>
-          ))
-      }
+                  <img
+                    src={ strMealThumb }
+                    alt={ `receita de${strMeal}` }
+                    width="100"
+                    data-testid={ `${index}-card-img` }
+                  />
+                  <p
+                    data-testid={ `${index}-card-name` }
+                  >
+                    { strMeal }
+                  </p>
+                </div>
+              </Link>
+            ))
+        }
+      </section>
       <BottonMenu />
     </section>
   );

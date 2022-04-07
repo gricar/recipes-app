@@ -13,7 +13,7 @@ function Profile({ history }) {
   }, []);
 
   return (
-    <section>
+    <section className="container-profile">
       <Header title="Profile" searchBtn={ false } />
       <div className="profile">
         <p data-testid="profile-email">{ user.email }</p>

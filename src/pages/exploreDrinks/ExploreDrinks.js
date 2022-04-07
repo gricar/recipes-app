@@ -14,7 +14,7 @@ function ExploreDrinks() {
   };
 
   return (
-    <div>
+    <div className="container-explore-drinks">
       <Header title="Explore Drinks" searchBtn={ false } />
       <div className="exploreDrinks">
         <button

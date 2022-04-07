@@ -1,11 +1,23 @@
+.container-explore-drinks {
+  background-color: var(--color5);
+  height: 80vh;
+  padding: 1.5cm 0;
+}
+
 .exploreDrinks {
+  align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
 .exploreDrinks > button {
+  color: var(--color2);
   cursor: pointer;
+  font-family: Open Sans , sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
   margin-top: 20px;
   padding: 10px 5px;
-  width: 30%;
+  width: 70%;
 }
