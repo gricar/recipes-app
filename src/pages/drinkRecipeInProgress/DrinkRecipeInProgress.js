@@ -20,6 +20,7 @@ function DrinkRecipeInProgress(props) {
   const [favoriteStatus, setFavoriteStatus] = useState(); // Copiado da Su
   const [msgShare, setMsgShare] = useState(''); // Copiado da Su
   const [recipeInProgress, setRecipeInProgress] = useState(); // É para poder utilizar os dados daquele prato dentro de FoodRecipeInProgress.
+  const [isAllChecked, setIsAllChecked] = useState(); // Alissa e Gabriel
 
   const {
     getDrinksList,
@@ -106,9 +107,13 @@ function DrinkRecipeInProgress(props) {
             ? <ButtonRemoveFavorite productList={ drinks[0] } typeItem="drink" />
             : <ButtonAddFavorite productList={ drinks[0] } typeItem="drink" />
         }
-        <Ingredients ingredientsMeasures={ ingredientsMeasures } />
+        <Ingredients
+          ingredientsMeasures={ ingredientsMeasures }
+          setIsAllChecked={ setIsAllChecked }
+        />
         <Instructions instructions={ recipeInProgress.strInstructions } />
-        <Finish />
+        <Finish isAllChecked={ isAllChecked } />
+
       </main>)
   );
 }

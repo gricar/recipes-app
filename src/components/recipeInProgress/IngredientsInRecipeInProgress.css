@@ -1,0 +1,8 @@
+.ingredients-list {
+  list-style-type: none;
+}
+
+.ingredient-container input:checked ~ .checkmark {
+  color: red;
+  text-decoration: line-through;
+}
