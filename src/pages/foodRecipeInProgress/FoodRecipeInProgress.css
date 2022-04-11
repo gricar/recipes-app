@@ -1,15 +1,4 @@
-.msg-share {
-  background-color: transparent;
-  color: white;
-  font-weight: 800;
-  height: 40px;
-  letter-spacing: 1px;
-  margin: 0;
-  padding: 8px 0 0;
-  width: 120px;
-}
-
-.startRecipe {
+.finishRecipe {
   background-color: var(--color1);
   bottom: 0;
   color: white;
@@ -27,7 +16,7 @@
   background-color: var(--color5);
 }
 
-.food-details p, h2, h3, ul {
+.food-details p, h1, h2, h3, ul {
   background-color: white;
   margin-left: auto;
   margin-right: auto;
@@ -45,7 +34,7 @@
   text-align: justify;
 }
 
-.food-details h2 {
+.food-details h1 {
   text-align: center;
 }
 
@@ -54,7 +43,6 @@
   letter-spacing: 1px;
   margin-bottom: 0;
 }
-
 
 .food-details iframe {
   margin: 30px;
@@ -68,15 +56,26 @@
 }
 
 .buttons-share-fav {
-  background-color: transparent;
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
 }
 
 .buttons-share-fav button {
+  background-color: transparent;
   border: none;
   border-radius: 10px;
   height: 40px;
   width: 60px;
+}
+
+.msg-share {
+  background-color: transparent;
+  color: white;
+  font-weight: 800;
+  height: 40px;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 8px 0 0;
+  width: 120px;
 }

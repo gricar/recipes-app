@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { getStorage, setStorage } from '../../services/SetAndGetStorage';
-import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
+import addFavoriteIcon from '../../images/addFavoriteIcon.svg';
 import FoodContext from '../../context/FoodContext';
 
 function ButtonAddFavorite({ productList, typeItem }) {
@@ -64,7 +64,7 @@ function ButtonAddFavorite({ productList, typeItem }) {
       id="favorite"
       onClick={ addFavorite }
     >
-      <img src={ whiteHeartIcon } alt="white heart" />
+      <img src={ addFavoriteIcon } alt="white heart" />
     </button>
   );
 }

@@ -24,7 +24,6 @@ function CardDrinksCarousel({ quant, dataIdText }) {
       }, index) => (
         <Link
           key={ idDrink }
-          // style={ { textDecoration: 'none', color: 'black' } }
           to={ `/drinks/${idDrink}` }
         >
           <div

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { getStorage, setStorage } from '../../services/SetAndGetStorage';
-import blackHeartIcon from '../../images/blackHeartIcon.svg';
+// import favoriteHeart from '../../images/favoriteHeart.svg';
+import removeFavoriteIcon from '../../images/removeFavoriteIcon.svg';
 import FoodContext from '../../context/FoodContext';
 
 function ButtonRemoveFavorite({ productList, typeItem }) {
@@ -38,7 +39,7 @@ function ButtonRemoveFavorite({ productList, typeItem }) {
       id="favorite"
       onClick={ removeFavorite }
     >
-      <img src={ blackHeartIcon } alt="blackHeartIcon" />
+      <img src={ removeFavoriteIcon } alt="blackHeartIcon" />
     </button>
   );
 }

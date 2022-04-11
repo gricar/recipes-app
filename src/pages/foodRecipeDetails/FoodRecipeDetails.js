@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import React, { useEffect, useContext, useState } from 'react';
 import FoodContext from '../../context/FoodContext';
-import shareIcon from '../../images/shareIcon.svg';
+import shareIconBlue from '../../images/shareIconBlue.svg';
 import ListIngreAndMeasu from '../../components/pagesDetails/ListIngreAndMeasu';
 import './FoodRecipeDetails.css';
 import ButtonRemoveFavorite from '../../components/buttonRemoveFav/ButtonRemoveFavorite';
@@ -82,33 +82,42 @@ function FoodRecipeDetails(props) {
   }, [favoriteList]);
 
   return (
-    <section>
+    <section className="food-details">
       {foodDetailById.meals.length > 0
         && (
           <>
             <img
+              className="food-detail-pic"
               src={ meals[0].strMealThumb }
               data-testid="recipe-photo"
               alt="food"
             />
+            <div className="buttons-share-fav">
+              <p className="msg-share">{ msgShare }</p>
+              <div className="button-share">
+                <button
+                  src="shareIcon"
+                  data-testid="share-btn"
+                  type="button"
+                  id="shareIcon"
+                  onClick={ () => share(url) }
+                >
+                  <img src={ shareIconBlue } alt="share" />
+                </button>
+              </div>
+              <div className="button-favorite">
+                {
+                  favoriteStatus
+                    ? <ButtonRemoveFavorite productList={ meals[0] } typeItem="food" />
+                    : <ButtonAddFavorite productList={ meals[0] } typeItem="food" />
+                }
+              </div>
+            </div>
             <h2 data-testid="recipe-title">{ meals[0].strMeal }</h2>
-            <button
-              src="shareIcon"
-              data-testid="share-btn"
-              type="button"
-              id="shareIcon"
-              onClick={ () => share(url) }
-            >
-              <img src={ shareIcon } alt="share" />
-            </button>
-            <p>{ msgShare }</p>
-            {
-              favoriteStatus
-                ? <ButtonRemoveFavorite productList={ meals[0] } typeItem="food" />
-                : <ButtonAddFavorite productList={ meals[0] } typeItem="food" />
-            }
             <p data-testid="recipe-category">{ meals[0].strCategory }</p>
+            <h3>Ingredients</h3>
             <ListIngreAndMeasu productList={ meals[0] } />
+            <h3>Instructions</h3>
             <p data-testid="instructions">{ meals[0].strInstructions }</p>
             <iframe
               data-testid="video"

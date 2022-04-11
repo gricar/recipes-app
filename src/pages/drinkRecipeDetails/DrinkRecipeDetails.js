@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import React, { useEffect, useContext, useState } from 'react';
 import DrinksContext from '../../context/DrinksContext';
 import FoodContext from '../../context/FoodContext';
-import shareIcon from '../../images/shareIcon.svg';
+import shareIconBlue from '../../images/shareIconBlue.svg';
 import ListIngreAndMeasu from '../../components/pagesDetails/ListIngreAndMeasu';
 import './DrinkRecipeDetails.css';
 import ButtonAddFavorite from '../../components/buttonAddFav/ButtonAddFavorite';
@@ -78,33 +78,40 @@ function DrinkRecipeDetails(props) {
   };
 
   return (
-    <section>
+    <section className="drink-details">
       {drinksDetailById.drinks.length > 0
         && (
           <>
             <img
+              className="food-detail-pic"
               src={ drinks[0].strDrinkThumb }
               data-testid="recipe-photo"
               alt="drink"
             />
+            <div className="buttons-share-fav">
+              <p className="msg-share">{ msgShare }</p>
+              <div className="button-share">
+                <button
+                  src="shareIcon"
+                  data-testid="share-btn"
+                  type="button"
+                  id="shareIcon"
+                  onClick={ () => share(url) }
+                >
+                  <img src={ shareIconBlue } alt="share" />
+                </button>
+              </div>
+              {
+                favoriteStatus
+                  ? <ButtonRemoveFavorite productList={ drinks[0] } typeItem="drink" />
+                  : <ButtonAddFavorite productList={ drinks[0] } typeItem="drink" />
+              }
+            </div>
             <h2 data-testid="recipe-title">{ drinks[0].strDrink }</h2>
-            <button
-              src="shareIcon"
-              data-testid="share-btn"
-              type="button"
-              id="shareIcon"
-              onClick={ () => share(url) }
-            >
-              <img src={ shareIcon } alt="share" />
-            </button>
-            <p>{ msgShare }</p>
-            {
-              favoriteStatus
-                ? <ButtonRemoveFavorite productList={ drinks[0] } typeItem="drink" />
-                : <ButtonAddFavorite productList={ drinks[0] } typeItem="drink" />
-            }
             <p data-testid="recipe-category">{ drinks[0].strAlcoholic }</p>
+            <h3>Ingredients</h3>
             <ListIngreAndMeasu productList={ drinks[0] } />
+            <h3>Instructions</h3>
             <p data-testid="instructions">{ drinks[0].strInstructions }</p>
             <CardFoodsCarousel quant={ 6 } dataIdText="-recomendation-card" />
             <button

@@ -4,6 +4,7 @@ import React from 'react';
 function Thumbnail({ thumb, title }) {
   return (<img
     data-testid="recipe-photo"
+    className="food-detail-pic"
     src={ thumb }
     alt={ title }
   />

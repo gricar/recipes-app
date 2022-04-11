@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import shareIcon from '../../images/shareIcon.svg';
 import { getStorage } from '../../services/SetAndGetStorage';
-import './DoneRecipes.css';
 
 function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState([]);

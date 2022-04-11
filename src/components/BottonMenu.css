@@ -6,3 +6,9 @@
   text-align: center;
   width: 100%;
 }
+
+.bottonMenu button {
+  background-color: var(--color1);
+  border: none;
+  height: 55px;
+}

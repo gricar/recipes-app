@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/Header';
-import shareIcon from '../../images/shareIcon.svg';
-import blackHeartIcon from '../../images/blackHeartIcon.svg';
+import shareIconBlue from '../../images/shareIconBlue.svg';
+import addFavoriteIcon from '../../images/addFavoriteIcon.svg';
 import { getStorage, setStorage } from '../../services/SetAndGetStorage';
 
 function FavoriteRecipes() {
@@ -125,17 +125,17 @@ function FavoriteRecipes() {
                   {
                     copyUrl === name
                       ? <p>Link copied!</p>
-                      : <img src={ shareIcon } alt="compartilhar receita" />
+                      : <img src={ shareIconBlue } alt="compartilhar receita" />
                   }
                 </button>
                 <button
                   name={ name }
                   type="button"
                   data-testid={ `${index}-horizontal-favorite-btn` }
-                  src="blackHeartIcon"
+                  src="addFavoriteIcon"
                   onClick={ () => handleDisfavorRecipe(id) }
                 >
-                  <img src={ blackHeartIcon } alt="compartilhar receita" />
+                  <img src={ addFavoriteIcon } alt="compartilhar receita" />
                 </button>
               </div>
             );
@@ -185,10 +185,10 @@ function FavoriteRecipes() {
                 name={ name }
                 type="button"
                 data-testid={ `${index}-horizontal-favorite-btn` }
-                src="blackHeartIcon"
+                src="addFavoriteIcon"
                 onClick={ () => handleDisfavorRecipe(id) }
               >
-                <img src={ blackHeartIcon } alt="compartilhar receita" />
+                <img src={ addFavoriteIcon } alt="compartilhar receita" />
               </button>
             </div>
           );

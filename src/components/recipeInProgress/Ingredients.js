@@ -17,6 +17,7 @@ function Ingredients({ ingredientsMeasures, setIsAllChecked }) {
 
   return (
     <section>
+      <h3>Ingredients</h3>
       <ul className="ingredients-list">
         { ingredientsMeasures.map((ingredient, index) => (
           <li key={ index }>

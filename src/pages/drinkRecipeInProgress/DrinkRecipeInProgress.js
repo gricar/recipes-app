@@ -10,7 +10,7 @@ import Subtitle from '../../components/recipeInProgress/Subtitle';
 import Thumbnail from '../../components/recipeInProgress/Thumbnail';
 import Title from '../../components/recipeInProgress/Title';
 import { getStorage } from '../../services/SetAndGetStorage';
-import shareIcon from '../../images/shareIcon.svg';
+import shareIconBlue from '../../images/shareIconBlue.svg';
 import DrinksContext from '../../context/DrinksContext';
 import FoodContext from '../../context/FoodContext';
 
@@ -85,28 +85,30 @@ function DrinkRecipeInProgress(props) {
   // Os ingredientes são processados dentro do componente.
   return (recipeInProgress !== undefined
     && (
-      <main>
+      <main className="drink-details">
         <Thumbnail
           thumb={ recipeInProgress.strDrinkThumb }
           title={ recipeInProgress.strDrink }
         />
+        <div className="buttons-share-fav">
+          <p className="msg-share">{ msgShare }</p>
+          <button
+            src="BlueshareIconBlue"
+            data-testid="share-btn"
+            type="button"
+            id="BlueshareIconBlue"
+            onClick={ () => share() }
+          >
+            <img src={ shareIconBlue } alt="share" />
+          </button>
+          { // Copiado da Su
+            favoriteStatus
+              ? <ButtonRemoveFavorite productList={ drinks[0] } typeItem="drink" />
+              : <ButtonAddFavorite productList={ drinks[0] } typeItem="drink" />
+          }
+        </div>
         <Title title={ recipeInProgress.strDrink } />
         <Subtitle subtitle={ recipeInProgress.strAlcoholic } />
-        <button
-          src="shareIcon"
-          data-testid="share-btn"
-          type="button"
-          id="shareIcon"
-          onClick={ () => share() }
-        >
-          <img src={ shareIcon } alt="share" />
-        </button>
-        <p>{ msgShare }</p>
-        { // Copiado da Su
-          favoriteStatus
-            ? <ButtonRemoveFavorite productList={ drinks[0] } typeItem="drink" />
-            : <ButtonAddFavorite productList={ drinks[0] } typeItem="drink" />
-        }
         <Ingredients
           ingredientsMeasures={ ingredientsMeasures }
           setIsAllChecked={ setIsAllChecked }

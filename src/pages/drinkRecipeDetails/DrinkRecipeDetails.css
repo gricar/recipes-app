@@ -1,7 +1,82 @@
 .startRecipe {
+  background-color: var(--color4);
   bottom: 0;
+  color: white;
+  font-weight: 800;
+  height: 2.5em;
   left: 0;
+  letter-spacing: 1px;
   position: fixed;
   text-align: center;
-  width: 60%;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.drink-details {
+  background-color: var(--color5);
+}
+
+.drink-details p, h2, h3, ul {
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3px;
+  opacity: 0.8;
+  padding: 5px 15px;
+  width: 270px;
+}
+
+.drink-details li {
+  margin-left: 15px;
+}
+
+.drink-details p {
+  text-align: justify;
+}
+
+.drink-details h2 {
+  text-align: center;
+}
+
+.drink-details h3 {
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+
+
+.drink-details iframe {
+  margin: 30px;
+}
+
+.drink-details-pic {
+  background-color: white;
+  margin: 17px 17px 0;
+  padding: 3px;
+  width: 50vmax;
+}
+
+.buttons-share-fav {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.buttons-share-fav button {
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  width: 60px;
+}
+
+.msg-share {
+  background-color: transparent;
+  color: white;
+  font-weight: 800;
+  height: 40px;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 8px 0 0;
+  width: 120px;
 }

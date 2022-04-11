@@ -6,6 +6,21 @@
 }
 
 .card-carousel {
+  background-color: white;
+  box-shadow: 5px 5px 5px var(--color0);
   display: inline-block;
-  margin: 40px;
+  height: 175px;
+  margin: 20px 15px 60px 5px;
+  width: 150px;
+}
+
+.card-carousel p {
+  padding: 0;
+  text-align: center;
+  width: 120px;
+}
+
+.card-carousel img {
+  margin: 12px;
+  margin-left: 23px;
 }

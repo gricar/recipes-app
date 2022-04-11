@@ -10,8 +10,9 @@ import Subtitle from '../../components/recipeInProgress/Subtitle';
 import Thumbnail from '../../components/recipeInProgress/Thumbnail';
 import Title from '../../components/recipeInProgress/Title';
 import { getStorage } from '../../services/SetAndGetStorage';
-import shareIcon from '../../images/shareIcon.svg';
+import shareIconBlue from '../../images/shareIconBlue.svg';
 import FoodContext from '../../context/FoodContext';
+import './FoodRecipeInProgress.css';
 
 function FoodRecipeInProgress(props) {
   const { match: { params: { recipeid } } } = props; // resultado: /foods/:recipeid/in-progress ; quando é bebida em progresso substitui por drinks.
@@ -80,28 +81,30 @@ function FoodRecipeInProgress(props) {
   // Os ingredientes são processados dentro do componente.
   return (recipeInProgress !== undefined
     && (
-      <main>
+      <main className="food-details">
         <Thumbnail
           thumb={ recipeInProgress.strMealThumb }
           title={ recipeInProgress.strMeal }
         />
+        <div className="buttons-share-fav">
+          <p className="msg-share">{ msgShare }</p>
+          <button
+            src="shareIcon"
+            data-testid="share-btn"
+            type="button"
+            id="shareIcon"
+            onClick={ () => share() }
+          >
+            <img src={ shareIconBlue } alt="share" />
+          </button>
+          { // Copiado da Su
+            favoriteStatus
+              ? <ButtonRemoveFavorite productList={ meals[0] } typeItem="food" />
+              : <ButtonAddFavorite productList={ meals[0] } typeItem="food" />
+          }
+        </div>
         <Title title={ recipeInProgress.strMeal } />
         <Subtitle subtitle={ recipeInProgress.strCategory } />
-        <button
-          src="shareIcon"
-          data-testid="share-btn"
-          type="button"
-          id="shareIcon"
-          onClick={ () => share() }
-        >
-          <img src={ shareIcon } alt="share" />
-        </button>
-        <p>{ msgShare }</p>
-        { // Copiado da Su
-          favoriteStatus
-            ? <ButtonRemoveFavorite productList={ meals[0] } typeItem="food" />
-            : <ButtonAddFavorite productList={ meals[0] } typeItem="food" />
-        }
         <Ingredients
           ingredientsMeasures={ ingredientsMeasures }
           setIsAllChecked={ setIsAllChecked }
