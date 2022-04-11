@@ -14,7 +14,8 @@
 }
 
 .header h3 {
-  color: white;
+  background-color: var(--color1);
+  text-align: center;
 }
 
 .searchIconColor {

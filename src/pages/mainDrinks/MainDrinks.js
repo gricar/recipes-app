@@ -7,7 +7,7 @@ import ButtonCategoryDrink from '../../components/carddrinks/ButtonCategoryDrink
 
 function MainDrinks() {
   return (
-    <section>
+    <section className="main-container">
       <Header title="Drinks" />
       <ButtonCategoryDrink />
       <CardDrinks quant={ 12 } dataIdText="-recipe-card" />

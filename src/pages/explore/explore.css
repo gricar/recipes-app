@@ -9,6 +9,9 @@
 
 .exploreButtons > button {
   align-self: baseline;
+  background-color: white;
+  border: 1px solid var(--color0);
+  border-radius: 5px;
   color: var(--color2);
   cursor: pointer;
   font-family: Open Sans , sans-serif;

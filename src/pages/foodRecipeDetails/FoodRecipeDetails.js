@@ -10,6 +10,7 @@ import ButtonRemoveFavorite from '../../components/buttonRemoveFav/ButtonRemoveF
 import ButtonAddFavorite from '../../components/buttonAddFav/ButtonAddFavorite';
 import { getStorage } from '../../services/SetAndGetStorage';
 import CardDrinksCarousel from '../../components/cardCarousel/CardDrinksCarousel';
+import backIcon from '../../images/back-icon.png';
 
 //  STCOSTA
 function FoodRecipeDetails(props) {
@@ -83,6 +84,17 @@ function FoodRecipeDetails(props) {
 
   return (
     <section className="food-details">
+      <button
+        className="button-back-icon"
+        type="button"
+        onClick={ () => history.push('/foods') }
+      >
+        <img
+          className="back-icon"
+          src={ backIcon }
+          alt="retornar para página de explorar"
+        />
+      </button>
       {foodDetailById.meals.length > 0
         && (
           <>
