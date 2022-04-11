@@ -23,10 +23,6 @@
   width: 100%;
 }
 
-.food-details {
-  background-color: var(--color5);
-}
-
 .food-details p, h2, h3, ul {
   background-color: white;
   margin-left: auto;
@@ -62,7 +58,7 @@
 
 .food-detail-pic {
   background-color: white;
-  margin: 17px 17px 0;
+  margin: 20px 17px 0;
   padding: 3px;
   width: 50vmax;
 }
@@ -81,6 +77,17 @@
   width: 60px;
 }
 
+.button-back-icon {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+}
+
+.back-icon {
+  margin-top: 10px;
+  width: 30px;
+}
+  
 [ hidden ] {
   display: none;
 }

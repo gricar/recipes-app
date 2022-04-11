@@ -1,6 +1,10 @@
 .main-container {
   background-color: var(--color5);
-  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  z-index: 9999;
 }
 
 .container-button-category {
@@ -8,18 +12,20 @@
   flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 50px;
-  padding: 3px;
+
 }
 
 .container-button-category button {
+  background-color: white;
+  border: 1px solid var(--color0);
+  border-radius: 5px;
   color: var(--color2);
   font-family: Open Sans , sans-serif;
   font-weight: 600;
   letter-spacing: 1px;
-  margin: 5px 23px;
+  margin: 5px;
   padding: 5px 0;
-  width: 9em;
+  width: 12em;
 }
 
 .container-button-category button:active {
@@ -27,23 +33,19 @@
 }
 
 .container-card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .card {
-  align-items: center;
   background-color: white;
   border: 1px solid var(--color0);
   border-radius: 10px;
   box-shadow: 5px 5px 5px var(--color0);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: inline-block;
   margin: 10px;
   padding: 9px;
-  width: 125px;
 }
 
 .card p {
@@ -57,6 +59,7 @@
 .card img {
   border: 1px solid var(--color0);
   padding: 3px;
+  width: 280px;
 }
 
 .link-card {

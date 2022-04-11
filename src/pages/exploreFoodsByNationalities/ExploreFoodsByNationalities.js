@@ -63,7 +63,7 @@ function ExploreFoodsByNationalities() {
         </select>
       </form>
 
-      <section>
+      <section className="container-card">
         {
           recipes && recipes
             .slice(0, QTD_RECIPES).map(({

@@ -32,7 +32,7 @@ function ExploreDrinksByIngredients() {
   };
 
   return (
-    <div>
+    <div className="container-explore-ingredients">
       <Header title="Explore Ingredients" searchBtn={ false } />
       <div className="exploreByIngredients">
         {
