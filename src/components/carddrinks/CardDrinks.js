@@ -25,7 +25,6 @@ function CardDrinks({ quant, dataIdText }) {
       }, index) => (
         <Link
           key={ idDrink }
-          // style={ { textDecoration: 'none', color: 'black' } }
           to={ `/drinks/${idDrink}` }
         >
           <div
@@ -35,7 +34,6 @@ function CardDrinks({ quant, dataIdText }) {
             <img
               src={ strDrinkThumb }
               alt={ `receita de${strDrink}` }
-              width="100"
               data-testid={ `${index}-card-img` }
             />
             <p
