@@ -1,12 +1,9 @@
-.startRecipe {
-  background-color: var(--color4);
-  bottom: 0;
+.drink-details .startRecipe {
+  background-color: var(--color1);
   color: white;
   font-weight: 800;
   height: 2.5em;
-  left: 0;
   letter-spacing: 1px;
-  position: fixed;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
@@ -70,7 +67,7 @@
   width: 60px;
 }
 
-.msg-share {
+.drink-details .msg-share {
   background-color: transparent;
   color: white;
   font-weight: 800;

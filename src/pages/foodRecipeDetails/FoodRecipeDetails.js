@@ -126,11 +126,21 @@ function FoodRecipeDetails(props) {
               </div>
             </div>
             <h2 data-testid="recipe-title">{ meals[0].strMeal }</h2>
-            <p data-testid="recipe-category">{ meals[0].strCategory }</p>
+            <p
+              className="recipe-category"
+              data-testid="recipe-category"
+            >
+              { meals[0].strCategory }
+            </p>
             <h3>Ingredients</h3>
             <ListIngreAndMeasu productList={ meals[0] } />
             <h3>Instructions</h3>
-            <p data-testid="instructions">{ meals[0].strInstructions }</p>
+            <p
+              className="recipe-instructions"
+              data-testid="instructions"
+            >
+              { meals[0].strInstructions }
+            </p>
             <iframe
               data-testid="video"
               src={ getVideoURL(meals[0].strYoutube) }

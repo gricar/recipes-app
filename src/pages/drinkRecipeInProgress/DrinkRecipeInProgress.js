@@ -13,6 +13,7 @@ import { getStorage } from '../../services/SetAndGetStorage';
 import shareIconBlue from '../../images/shareIconBlue.svg';
 import DrinksContext from '../../context/DrinksContext';
 import FoodContext from '../../context/FoodContext';
+import './DrinkRecipeInProgress.css';
 
 function DrinkRecipeInProgress(props) {
   const { match: { params: { recipeid } } } = props; // resultado: /foods/:recipeid/in-progress ; quando é bebida em progresso substitui por drinks.

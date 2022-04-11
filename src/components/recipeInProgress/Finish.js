@@ -7,7 +7,7 @@ function Finish({ isAllChecked }) {
   const history = useHistory();
   return (
     <button
-      className="finishRecipe"
+      className="finish-recipe"
       data-testid="finish-recipe-btn"
       type="button"
       disabled={ !isAllChecked }

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import profileIcon from '../../images/profileIcon.svg';
-import searchIconColor from '../../images/searchIconColor.svg';
+import searchIcon from '../../images/searchIcon.svg';
 import SearchInputBar from '../searchBar/SearchInputBar';
 import FoodContext from '../../context/FoodContext';
 import DrinksContext from '../../context/DrinksContext';
@@ -115,13 +115,13 @@ function Header({ title, searchBtn = true }) {
             <button
               type="button"
               data-testid="search-top-btn"
-              className="searchIconColor"
-              src={ searchIconColor }
+              className="searchIcon"
+              src={ searchIcon }
               onClick={ () => setHasSearchInput(!hasSearchInput) }
             >
               <img
-                src={ searchIconColor }
-                alt="searchIconColor"
+                src={ searchIcon }
+                alt="searchIcon"
               />
             </button>
           )

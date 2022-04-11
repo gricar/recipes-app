@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 // import drinkIcon from '../images/drinkIcon.svg';
-import searchIconColor from '../images/searchIconColor.svg';
-import orangeJuice from '../images/orangeJuice.svg';
-import yellowPlateIcon from '../images/yellowPlateIcon.svg';
+import searchIcon from '../images/searchIcon.svg';
+import drinkIcon from '../images/drinkIcon.svg';
+import mealIcon from '../images/mealIcon.svg';
 // import exploreIcon from '../images/exploreIcon.svg';
 import './BottonMenu.css';
 
@@ -20,7 +20,7 @@ function BottonMenu() {
         onClick={ () => history.push('/drinks') }
         aria-label="drinkIcon"
       >
-        <img src={ orangeJuice } alt="drink" />
+        <img src={ drinkIcon } alt="drink" />
       </button>
       <button
         src="exploreIcon"
@@ -30,17 +30,17 @@ function BottonMenu() {
         onClick={ () => history.push('/explore') }
         aria-label="exploreIcon"
       >
-        <img src={ searchIconColor } alt="explore" />
+        <img src={ searchIcon } alt="explore" />
       </button>
       <button
-        src="yellowPlateIcon"
+        src="mealIcon"
         data-testid="food-bottom-btn"
         type="button"
-        id="yellowPlateIcon"
+        id="mealIcon"
         onClick={ () => history.push('/foods') }
-        aria-label="yellowPlateIcon"
+        aria-label="mealIcon"
       >
-        <img src={ yellowPlateIcon } alt="meal" />
+        <img src={ mealIcon } alt="meal" />
       </button>
     </nav>
   );
