@@ -14,6 +14,7 @@
   
   - [`React`](https://pt-br.reactjs.org/)
   - [`JavaScript`](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+  - [`CSS`](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
   - [`ESLint`](https://eslint.org/)
 </details>
 
